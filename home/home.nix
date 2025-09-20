@@ -16,7 +16,7 @@
     userName = "Alysara";
     userEmail = "alysara@proton.me";
     extraConfig = {
-      init.defaultBranch = "maind";
+      init.defaultBranch = "main";
     };
   };
 
