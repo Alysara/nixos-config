@@ -11,7 +11,7 @@
 
   outputs = inputs@{ self, nixpkgs,  home-manager, ... }:
     let
-      inherit (self) output;
+      inherit (self) outputs;
       lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
