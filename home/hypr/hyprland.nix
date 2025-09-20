@@ -1,11 +1,6 @@
 { inputs, pkgs, fetchurl, lib, ... }:
 
 {
-  services.displayManager = {
-    sessionPackages = [
-      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    ];
-  }; 
   wayland.windowManager.hyprland = {
     enable = true;
    

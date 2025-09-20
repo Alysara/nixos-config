@@ -136,6 +136,12 @@
   system.stateVersion = "25.05"; # Did you read the comment?
   
   hardware.bluetooth.enable = true;
+  
+  services.displayManager = {
+    sessionPackages = [
+      inputs.hyprland.packages.${pkgs.stdend.hostPlatform.system}.hyprland
+    ];
+  }; 
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
