@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./hypr/hyprland.nix
     ./waybar/waybar.nix
     ./rofi/rofi.nix
   ];

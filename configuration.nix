@@ -105,6 +105,7 @@
     wget
     discord
     git
+    protonvpn-gui
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -133,6 +134,8 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
+  
+  hardware.bluetooth.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
