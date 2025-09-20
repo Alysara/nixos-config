@@ -139,7 +139,7 @@
   
   services.displayManager = {
     sessionPackages = [
-      inputs.hyprland.packages.${pkgs.stdend.hostPlatform.system}.hyprland
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland
     ];
   }; 
 
