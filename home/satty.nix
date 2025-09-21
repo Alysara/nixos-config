@@ -26,7 +26,7 @@ in {
 
   wayland.windowManager.hyprland.settings = {
     bind = [
-      ", mouse:276, exec, ${takeScreenshot}"
+      "$mainMod Shift, S, exec, ${takeScreenshot}"
       ", Print, exec, ${takeScreenshot}" # printscreen
     ];
     windowrule = [
