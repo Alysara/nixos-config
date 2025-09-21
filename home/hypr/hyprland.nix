@@ -12,6 +12,9 @@
 
       workspace = [
         "1, persistent:true"
+        "2, persistent:true"
+        "3, persistent:true"
+        "special:mini, gapsout:128"
       ];
     
       xwayland.force_zero_scaling = true;
