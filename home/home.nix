@@ -63,6 +63,15 @@
     (pkgs.writeShellScriptBin "buildhome" (builtins.readFile ../scripts/buildhome.sh))
   ];
 
+  programs.btop = {
+    enable = true;
+    package = pkgs.btop.override {
+      cudaSupport = true;
+    };
+    settings.disks_filter = "exclude=/nix /home";
+  };
+  catppuccin.btop.enable = true;
+
   programs.vesktop.enable = true;
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
