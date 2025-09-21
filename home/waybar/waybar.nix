@@ -46,7 +46,7 @@
 
         network = {
           format = "{bandWidthDownBits}"
-        }
+        };
 
         # battery = {
         #   states = {
