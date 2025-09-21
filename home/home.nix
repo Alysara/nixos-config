@@ -25,7 +25,6 @@
     };
   };
 
-  inputs.zen-browser.packages."${system}".default;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -43,6 +42,7 @@
   home.packages = with pkgs; [
     wl-clipboard
     yazi
+    inputs.zen-browser.packages."${system}".default
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
