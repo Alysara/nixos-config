@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-git add *
+git add ~/.dotfiles
 git commit -m "${1:-"This is an automated commit"}"
 git push github main
 
