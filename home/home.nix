@@ -49,9 +49,9 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-    (pkgs.writeShellScriptBin "fastcommit" (builtins.readFile /home/alysara/.dotfiles/scripts/fastcommit.sh))
-    (pkgs.writeShellScriptBin "buildnix" (builtins.readFile /home/alysara/.dotfiles/scripts/buildnix.sh))
-    (pkgs.writeShellScriptBin "buildhome" (builtins.readFile /home/alysara/.dotfiles/scripts/buildhome.sh))
+    (pkgs.writeShellScriptBin "fastcommit" (builtins.readFile ../scripts/fastcommit.sh))
+    (pkgs.writeShellScriptBin "buildnix" (builtins.readFile ../scripts/buildnix.sh))
+    (pkgs.writeShellScriptBin "buildhome" (builtins.readFile ../scripts/buildhome.sh))
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
