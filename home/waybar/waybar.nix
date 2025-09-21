@@ -2,7 +2,7 @@
 
 {
 
-  catpuccin.waybar = {
+  catppuccin.waybar = {
     enable = true;
     mode = "createLink";
   };
