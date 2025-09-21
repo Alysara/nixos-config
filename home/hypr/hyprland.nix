@@ -27,7 +27,7 @@
         "col.active_border" = "0xffffffff";
         "col.nogroup_border" = "0xffffaaff";
         "col.nogroup_border_active" = "0xffff00ff";
-        layout = dwindle;
+        layout = "dwindle";
         no_focus_fallback = false;
         resize_on_border = true;
         extend_border_grab_area = 15;
