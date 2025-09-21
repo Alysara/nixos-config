@@ -38,7 +38,6 @@
   home.packages = with pkgs; [
     wl-clipboard
     yazi
-    vscode
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -57,6 +56,8 @@
     (pkgs.writeShellScriptBin "buildnix" (builtins.readFile ../scripts/buildnix.sh))
     (pkgs.writeShellScriptBin "buildhome" (builtins.readFile ../scripts/buildhome.sh))
   ];
+
+  programs.vscode.enable = true;
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
