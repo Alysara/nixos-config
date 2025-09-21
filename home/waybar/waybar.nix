@@ -17,9 +17,9 @@
 
     settings = {
       main = {
-        position = "bottom";
+        position = "top";
         height = 26;
-        margin-top = -8;
+        margin-top = 8;
         margin-bottom = 6;
         margin-left = 13;
         margin-right = 13;
