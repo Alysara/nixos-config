@@ -90,7 +90,7 @@
       };
 
       input = {
-        kb_layout = us;
+        kb_layout = "us";
       };
 
 
