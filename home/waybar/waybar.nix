@@ -45,7 +45,7 @@
         };
 
         network = {
-          format-wifi = "";
+          format-wifi = "[{bandwidthDownBits}] ";
           format-ethernet = "";
           tooltip-format = "{ifname} via {gwaddr} ";
           format-linked = "{ifname} (No IP) ";

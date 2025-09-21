@@ -9,6 +9,7 @@
     ./rofi/rofi.nix
     ./kitty/kitty.nix
     ./satty.nix
+    ./fonts.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -74,7 +75,7 @@
 
   programs.yazi.enable = true;
   catppuccin.yazi.enable = true;
-  
+
   programs.vesktop.enable = true;
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
