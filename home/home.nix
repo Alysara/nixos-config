@@ -41,7 +41,6 @@
   # environment.
   home.packages = with pkgs; [
     wl-clipboard
-    yazi
     inputs.zen-browser.packages."${system}".default
 
 
@@ -72,6 +71,10 @@
   };
   catppuccin.btop.enable = true;
 
+
+  programs.yazi.enable = true;
+  catppuccin.yazi.enable = true;
+  
   programs.vesktop.enable = true;
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
