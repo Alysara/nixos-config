@@ -2,6 +2,8 @@
 
 {
   imports = [
+    inputs.catpuccin.homeModules.catppuccin
+
     ./hypr/hyprland.nix
     ./waybar/waybar.nix
     ./rofi/rofi.nix
