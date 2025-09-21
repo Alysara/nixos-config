@@ -60,3 +60,7 @@ window#waybar {
 #mpd {
     padding: 0 6px;
 }
+
+#clock {
+    background-color: @surface-0;
+}
