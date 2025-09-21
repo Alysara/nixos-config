@@ -102,14 +102,7 @@
     shellAliases = {
       ll = "ls -l";
       ".." = "cd ..";
-     # buildhome = "home-manager switch --flake ~/.dotfiles";
-     # buildnix = "sudo nixos-rebuild switch --flake ~/.dotfiles";
     };
-     initExtra = ''
-      testyTest() {
-        echo "Hewwo world! i did thingy! also, you said $1 ??"
-      }
-     '';
   };
 
   # Let Home Manager install and manage itself.
