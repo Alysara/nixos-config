@@ -37,6 +37,7 @@
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
+    wl-clipboard
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -50,6 +51,7 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+
     (pkgs.writeShellScriptBin "fastcommit" (builtins.readFile ../scripts/fastcommit.sh))
     (pkgs.writeShellScriptBin "buildnix" (builtins.readFile ../scripts/buildnix.sh))
     (pkgs.writeShellScriptBin "buildhome" (builtins.readFile ../scripts/buildhome.sh))
