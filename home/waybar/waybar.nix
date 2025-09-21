@@ -34,12 +34,27 @@
 
         modules-right = [
           "tray"
-          "pulseaudio"
           "network"
-          "power-profiles-daemon"
           "battery"
           "clock"
         ];
+
+        clock = {
+          format = "{:%b %d  %R}";
+          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+        };
+
+        network = {
+          format = "{bandWidthDownBits}"
+        }
+
+        # battery = {
+        #   states = {
+        #     95
+        #   }
+        # }
+
+
 
 
       };
