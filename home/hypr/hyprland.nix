@@ -48,10 +48,11 @@
         rounding = 10;
         rounding_power = 2;
         active_opacity = 0.9;
-        inactive_opacity = 0.5;
+        inactive_opacity = 0.8;
         fullscreen_opacity = 0.95;
         dim_modal = true;
         dim_inactive = true;
+        dim_strength = 0.2;
         dim_special = 0.2;
         dim_around = 0.4;
         # screen_shader = [insert path here]
@@ -91,6 +92,8 @@
 
       input = {
         kb_layout = "us";
+        sensitivity = 0;
+
       };
 
 
