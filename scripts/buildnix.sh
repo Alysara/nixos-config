@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+
+./fastcommit.sh $1
+sudo nixos-rebuild switch --flake ~/.dotfiles
