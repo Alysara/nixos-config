@@ -45,8 +45,12 @@
         };
 
         network = {
-          format = "{bandWidthDownBits}";
-          format-wifi = "{bandWidthDownBits}";
+          format-wifi = "";
+          format-ethernet = "";
+          tooltip-format = "{ifname} via {gwaddr} ";
+          format-linked = "{ifname} (No IP) ";
+          format-disconnected = "Disconnected ⚠";
+          format-alt = "{essid} ({signalStrength}%) ";
         };
 
         # battery = {
