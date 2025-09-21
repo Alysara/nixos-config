@@ -66,7 +66,7 @@
           size = 8;
           ignore_opacity = true;
           new_optimizations = true;
-          xray = true;
+          xray = false;
           noise = 0.0117;
           contrast = 0.8916;
           brightness = 0.8172;
