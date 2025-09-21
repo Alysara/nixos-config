@@ -18,7 +18,7 @@
 
       general = {
         border_size = 1;
-        no_borders_on_floating = false;
+        no_border_on_floating = false;
         gaps_in = 5;
         gaps_out = 10;
         float_gaps = 0;
@@ -77,13 +77,13 @@
 
         shadow = {
           enabled = true;
-          rangle = 4;
+          range = 4;
           render_power = 3;
           sharp = false;
           ignore_window = true;
           color = "0xee1a1a1a";
-          color_inactive = "unset";
-          offset = "[0, 0]";
+          # color_inactive = unset # type color
+          # offset = "[0, 0]"; needs a vec2:stof, figure out how to make ?
           scale = 1;
         };
 
