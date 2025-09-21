@@ -8,6 +8,7 @@
     ./waybar/waybar.nix
     ./rofi/rofi.nix
     ./kitty/kitty.nix
+    ./satty.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
