@@ -17,6 +17,11 @@
       xwayland.force_zero_scaling = true;
 
       "$mainMod" = "SUPER";
+
+      bindm = [
+        "$mainMod, mouse:272, movewindow"
+	"$mainMod, mouse:273, resizewindow"
+      ];
     };
   };
 }
