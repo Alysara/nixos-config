@@ -2,7 +2,7 @@
 
 {
   imports = [
-    inputs.catpuccin.homeModules.catppuccin
+    inputs.catppuccin.homeModules.catppuccin
 
     ./hypr/hyprland.nix
     ./waybar/waybar.nix
