@@ -46,6 +46,7 @@
 
         network = {
           format = "{bandWidthDownBits}";
+          format-wifi = "{bandWidthDownBits}";
         };
 
         # battery = {
