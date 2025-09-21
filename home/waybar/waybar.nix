@@ -45,7 +45,7 @@
         };
 
         network = {
-          format = "{bandWidthDownBits}"
+          format = "{bandWidthDownBits}";
         };
 
         # battery = {
