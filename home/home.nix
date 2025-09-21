@@ -36,6 +36,7 @@
   home.packages = with pkgs; [
     wl-clipboard
     yazi
+    vscode
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
