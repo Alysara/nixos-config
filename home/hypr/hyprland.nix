@@ -82,7 +82,7 @@
           sharp = false;
           ignore_window = true;
           color = "0xee1a1a1a";
-          color_inactive = unset;
+          color_inactive = "unset";
           offset = "[0, 0]";
           scale = 1;
         };
