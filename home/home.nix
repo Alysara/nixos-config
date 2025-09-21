@@ -33,8 +33,9 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    pkgs.wl-clipboard
+  home.packages = with pkgs [
+    wl-clipboard
+    yazi
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
