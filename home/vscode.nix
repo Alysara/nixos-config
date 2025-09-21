@@ -3,10 +3,8 @@
 {
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions; [
-      vscodevim.vim
-      arrterian.nix-env-selector
-
+    profiles.default.extensions = with pkgs.vscode-extensions; [
+      jnoortheen.nix-ide
     ];
   };
 }
