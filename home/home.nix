@@ -49,6 +49,9 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    (pkgs.writeShellScriptBin "fastcommit" (builtins.readFile /home/alysara/.dotfiles/scripts/fastcommit.sh))
+    (pkgs.writeShellScriptBin "buildnix" (builtins.readFile /home/alysara/.dotfiles/scripts/buildnix.sh))
+    (pkgs.writeShellScriptBin "buildhome" (builtins.readFile /home/alysara/.dotfiles/scripts/buildhome.sh))
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -85,13 +88,28 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
-  
-  programs.bash.enable = true; 
-  programs.bash.shellAliases = {
-    ll = "ls -l";
-    ".." = "cd ..";
-    buildhome = "home-manager switch --flake ~/.dotfiles";
-    buildnix = "sudo nixos-rebuild switch --flake ~/.dotfiles";
+
+  #programs.bash.enable = true; 
+  #programs.bash.shellAliases = {
+  #  ll = "ls -l";
+  #  ".." = "cd ..";
+  #  buildhome = "home-manager switch --flake ~/.dotfiles";
+  #  buildnix = "sudo nixos-rebuild switch --flake ~/.dotfiles";
+  #};
+
+  programs.bash = {
+    enable = true; 
+    shellAliases = {
+      ll = "ls -l";
+      ".." = "cd ..";
+     # buildhome = "home-manager switch --flake ~/.dotfiles";
+     # buildnix = "sudo nixos-rebuild switch --flake ~/.dotfiles";
+    };
+     initExtra = ''
+      testyTest() {
+        echo "Hewwo world! i did thingy! also, you said $1 ??"
+      }
+     '';
   };
 
   # Let Home Manager install and manage itself.

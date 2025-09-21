@@ -26,6 +26,7 @@
     homeConfigurations = {
       alysara = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
+        extraSpecialArgs = { inherit inputs outputs; };
         modules = [ ./home/home.nix ];
       };
     };
