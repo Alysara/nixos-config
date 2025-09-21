@@ -13,6 +13,7 @@
 
   programs.waybar= {
     enable = true;
+    style = ./style.css;
 
     settings = {
       main = {
