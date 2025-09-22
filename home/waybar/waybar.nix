@@ -33,6 +33,7 @@
 
         modules-right = [
           "tray"
+          "pulseaudio"
           "network"
           "battery"
           "clock"
@@ -51,6 +52,24 @@
           format-disconnected = "Disconnected ⚠";
           format-alt = "{essid} ({signalStrength}%) ";
           interval = 1;
+        };
+
+        pulseaudio = {
+          format = "{volume}% {icon}";
+          format-bluetooth = "{volume}% {icon}";
+          format-bluetooth-muted = " {icon}";
+          format-muted = "";
+          format-icons = {
+            hands-free = "";
+            headset = "";
+            phone = "";
+            portable = "";
+            car = "";
+            default = [
+                ""
+            ];
+          };
+          on-click = "pavucontrol";
         };
 
         # battery = {
