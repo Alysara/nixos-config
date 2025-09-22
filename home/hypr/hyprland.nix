@@ -136,7 +136,7 @@
         "$mainMod, E, exec, kitty"
         "$mainMod Shift, F, exec, firefox"
         "$mainMod, Z, exec, zen"
-        "$mainMod, F, exec, code"
+        "$mainMod, C, exec, code"
         "$mainMod, R, exec, kitty fish -C y"
         "$mainMod, Escape, exec, ${pkgs.hdrop}/bin/hdrop -f -p t -g 0 -h 40 -w 67 kitty --class kitty_hdrop"
 
