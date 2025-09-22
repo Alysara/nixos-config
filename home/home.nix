@@ -53,7 +53,7 @@
     unzip
     brightnessctl
 
-    inputs.zen-browser.packages."${system}".default.override {
+    (inputs.zen-browser.packages."${system}".default.override {
       policies = {
         AutofillAddressEnabled = true;
         AutofillCreditCardEnabled = false;
@@ -72,7 +72,7 @@
           Fingerprinting = true;
         };
       };
-    }
+    })
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
