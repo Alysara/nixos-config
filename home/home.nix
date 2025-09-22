@@ -52,6 +52,7 @@
     lshw
     unzip
     brightnessctl
+    inputs.zen-browser.packages."${system}".default
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
