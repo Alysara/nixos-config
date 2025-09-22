@@ -91,8 +91,6 @@
 
   services.blueman-applet.enable = true;
 
-  # programs.nm-applet.enable = true;
-
   programs.vesktop.enable = true;
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

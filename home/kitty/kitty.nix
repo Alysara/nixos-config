@@ -7,9 +7,9 @@
     #   confirm_os_window_close = false;
     #   enable_audio_bell = false;
     # };
-    # extraConfig = ''
-    #  map ctrl+backspace send_text all \x17
-    # '';
+    extraConfig = ''
+     map ctrl+a select_all
+    '';
   };
 
   catppuccin.kitty.enable = true;
