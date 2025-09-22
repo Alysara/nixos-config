@@ -1,8 +1,8 @@
-{ inputs, config, system, ... }:
+{ inputs, pkgs, ... }:
 
 {
   home.packages = [
-    inputs.zen-browser.packages."${system}".default.override {
+    pkgs.inputs.zen-browser.packages."${system}".default.override {
       policies = {
         AutofillAddressEnabled = true;
         AutofillCreditCardEnabled = false;
