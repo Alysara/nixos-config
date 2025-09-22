@@ -73,6 +73,13 @@
   };
   catppuccin.btop.enable = true;
 
+  security.wrappers.btop = {
+    owner = "root";
+    group = "root";
+    source = "${pkgs.btop}/bin/btop";
+    capabilities = "cap_perfmon+ep";
+  }
+
 
   programs.yazi.enable = true;
   catppuccin.yazi.enable = true;
