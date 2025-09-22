@@ -21,7 +21,7 @@
           Fingerprinting = true;
         };
       };
-    };
+    }
   ];
 
   # programs.zen-browser.policies = let
