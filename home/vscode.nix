@@ -14,7 +14,9 @@
         "files.autoSave" = "afterDelay";
         "workbench.colorTheme" = "Catppuccin Mocha";
         "explorer.confirmDelete" = false;
-        "font-family" = "'Hack Nerd Font', 'Droid Sans Mono', 'monospace";
+        "editor.fontFamily" = "'Hack Nerd Font', 'Droid Sans Mono', 'monospace";
+        "editor.fontLigatures" = true;
+        "terminal.integrated.fontLigatures.enabled" = true;
       };
     };
 
