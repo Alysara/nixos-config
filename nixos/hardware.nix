@@ -15,4 +15,9 @@
   };
   services.xserver.videoDrivers = [ "nvidia" "intel" ];
   hardware.nvidia.open = true;
+
+  hardware = {
+    opengl.enable = true;
+    nvidia.modesetting.enable = true;
+  }
 }
