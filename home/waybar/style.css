@@ -34,19 +34,12 @@ window#waybar {
     text-shadow: inherit;
 }
 
-.modules-right {
+.modules-right > *:not(:first-child)  {
     background-color: @base;
     padding: 0 5px;
     border-radius: 99px;
 }
 
-#network.network-extra {
-    background-color: @crust;
-    background: none;
-    padding: 0;
-    margin: 0 5px;
-    border-radius: 0;
-}
 
 #clock,
 #battery,
