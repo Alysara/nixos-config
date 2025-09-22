@@ -78,7 +78,7 @@
     group = "root";
     source = "${pkgs.btop}/bin/btop";
     capabilities = "cap_perfmon+ep";
-  }
+  };
 
 
   programs.yazi.enable = true;
