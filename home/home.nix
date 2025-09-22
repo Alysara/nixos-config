@@ -11,7 +11,7 @@
     ./satty.nix
     ./fonts.nix
     ./vscode.nix
-    ./zen.nix
+    # ./zen.nix
   ];
 
   catppuccin = {
@@ -52,6 +52,27 @@
     lshw
     unzip
     brightnessctl
+
+    inputs.zen-browser.packages."${system}".default.override {
+      policies = {
+        AutofillAddressEnabled = true;
+        AutofillCreditCardEnabled = false;
+        DisableAppUpdate = true;
+        DisableFeedbackCommands = true;
+        DisableFirefoxStudies = true;
+        DisablePocket = true;
+        DisableTelemetry = true;
+        DontCheckDefaultBrowser = true;
+        NoDefaultBookmarks = true;
+        OfferToSaveLogins = false;
+        EnableTrackingProtection = {
+          Value = true;
+          Locked = true;
+          Cryptomining = true;
+          Fingerprinting = true;
+        };
+      };
+    }
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
