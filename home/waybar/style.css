@@ -65,7 +65,7 @@ window#waybar {
     color: @mauve;
     background-color: @surface-0;
     padding: 0 2px;
-    margin: 20px;
+    /* margin: 20px; */
     font-weight: bold;
     border-radius: 99px;
 }
