@@ -85,6 +85,11 @@
           interval = 1;
         };
 
+        "network#network-extra" = {
+          format = "{bandwidthDownBits}";
+          interval = 1;
+        }
+
         pulseaudio = {
           format = "{volume}% {icon}";
           format-bluetooth = "{volume}% {icon}";
