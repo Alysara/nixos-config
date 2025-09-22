@@ -63,6 +63,9 @@ window#waybar {
 
 #clock {
     color: @mauve;
+    background-color: @surface;
     padding: 0 2px;
+    margin: 5px;
+    font-weight: bold;
     border-radius: 99px;
 }
