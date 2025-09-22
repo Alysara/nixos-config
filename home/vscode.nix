@@ -9,7 +9,7 @@
         catppuccin.catppuccin-vsc
       ];
 
-      settings = {
+      userSettings = {
         "files.autoSave" = "afterDelay";
         "workbench.colorTheme" = "Catppuccin Mocha";
       };
