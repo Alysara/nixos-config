@@ -58,9 +58,11 @@ window#waybar {
 #scratchpad,
 #power-profiles-daemon,
 #mpd {
-    padding: 0 6px;
+    padding: 0 20px;
 }
 
 #clock {
-    background-color: @surface-0;
+    color: @surface-0;
+    padding: 0 2px;
+    border-radius: 99px;
 }
