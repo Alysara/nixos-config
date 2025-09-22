@@ -134,13 +134,15 @@
 
       bind = [
         "$mainMod, E, exec, kitty"
-        "$mainMod, F, exec, firefox"
+        "$mainMod Shift, F, exec, firefox"
+        "$mainMod, Z, exec, zen"
+        "$mainMod, F, exec, code"
         "$mainMod, R, exec, kitty fish -C y"
         "$mainMod, Escape, exec, ${pkgs.hdrop}/bin/hdrop -f -p t -g 0 -h 40 -w 67 kitty --class kitty_hdrop"
 
         "$mainMod, Q, killactive,"
         "$mainMod, M, exit,"
-        "$mainMod, C, fullscreen,"
+        "$mainMod, F, fullscreen,"
         "$mainMod, V, togglefloating,"
         "$mainMod, P, pseudo,"
         "$mainMod, J, togglesplit,"
