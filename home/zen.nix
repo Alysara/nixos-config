@@ -1,4 +1,4 @@
-{ inputs }:
+{ ... }:
 
 {
   programs.zen-browser.policies = {
