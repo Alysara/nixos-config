@@ -44,7 +44,7 @@ window#waybar {
 #battery,
 #cpu,
 #memory,
-#disk
+#disk,
 #temperature,
 #backlight,
 #network,
@@ -63,7 +63,7 @@ window#waybar {
 
 #clock {
     color: @mauve;
-    background-color: @surface;
+    background-color: @surface-0;
     padding: 0 2px;
     margin: 5px;
     font-weight: bold;
