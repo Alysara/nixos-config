@@ -9,13 +9,20 @@ window#waybar {
     background-color: alpha(@crust, 0.4);
     color: @lavender;
     border-radius: 99px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 .modules-left {
+    order: 1;
     padding: 0 9px;
     color: @text;
 }
 
 .modules-center {
+    order: 2;
     background-color: @base;
     padding: 0 5px;
     border-radius: 99px;
@@ -34,22 +41,19 @@ window#waybar {
     text-shadow: inherit;
 }
 
+#network.network-extra {
+    order: 3;
+}
+
 .modules-right {
+    order: 4;
     background-color: @base;
     padding: 0 5px;
     border-radius: 99px;
 }
 
-.modules-right > #network.network-extra {
-    all: unset;
-}
 
-/* #network.network-extra {
-    background-color: @crust;
-    padding: 0 5px;
-    margin: 0 5px;
-    border-radius: 99px;
-} */
+
 
 #clock,
 #battery,

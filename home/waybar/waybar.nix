@@ -32,7 +32,6 @@
         ];
 
         modules-right = [
-          "network#network-extra"
           "tray"
           "pulseaudio"
           "network#network-main"
