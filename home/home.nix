@@ -48,6 +48,7 @@
   # environment.
   home.packages = with pkgs; [
     wl-clipboard
+    lshw
     inputs.zen-browser.packages."${system}".default
 
 
