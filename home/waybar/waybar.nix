@@ -32,9 +32,10 @@
         ];
 
         modules-right = [
+          "network#network-extra"
           "tray"
           "pulseaudio"
-          "network"
+          "network#network-main"
           "battery"
           "clock"
         ];
@@ -73,7 +74,7 @@
           ];
         };
 
-        network = {
+        "network#network-main" = {
           format-wifi = "[{bandwidthDownBits}] ";
           format-ethernet = "";
           tooltip-format = "{ifname} via {gwaddr} ";

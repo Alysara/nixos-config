@@ -47,7 +47,7 @@ window#waybar {
 #disk,
 #temperature,
 #backlight,
-#network,
+#network.network-main,
 #pulseaudio,
 #wireplumber,
 #custom-media,
