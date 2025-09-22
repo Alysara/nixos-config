@@ -44,6 +44,7 @@
   home.packages = with pkgs; [
     wl-clipboard
     inputs.zen-browser.packages."${system}".default
+    protonvpn-gui
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -82,8 +83,6 @@
 
   programs.fish.enable = true;
   catppuccin.fish.enable = true;
-
-  programs.proton-vpn-gui.enable = true;
 
   services.blueman-applet.enable = true;
 
