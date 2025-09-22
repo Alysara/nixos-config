@@ -39,6 +39,15 @@
           "clock"
         ];
 
+        "hyprland/window" = {
+          rewrite = {
+            "(.*) — Mozilla Firefox" = "$1";
+            "(.*) — Zen Browser" = "$1";
+            "(.*) - Visual Studio Code" = "$1";
+            "• Discord \\| ([^|]*) \\| ([^|]*)" = "$2 | $1";
+          };
+        };
+
         clock = {
           format = "{:%b %d %I:%M %p}";
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
