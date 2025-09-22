@@ -20,7 +20,11 @@ in {
         placeholder = mkLiteral "@overlay0";
       };
 
-      window.width = mkLiteral "20em";
+      window = {
+        width = mkLiteral "20em";
+        border-radius = mkLiteral "20";
+      };
+
       entry.placeholder-color = mkLiteral "@placeholder";
 
       num-rows.text-color = mkLiteral "@placeholder";
@@ -57,5 +61,4 @@ in {
     };
   };
 
-  xdg.configFile."rofi/config.rasi".source = ./config.rasi;
 }
