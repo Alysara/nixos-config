@@ -77,6 +77,13 @@
   programs.yazi.enable = true;
   catppuccin.yazi.enable = true;
 
+  services.swaync.enable = true;
+  catppuccin.swaync.enable = true;
+
+  programs.fish.enable = true;
+  catppuccin.fish.enable = true;
+
+
   programs.vesktop.enable = true;
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
