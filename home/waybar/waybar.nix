@@ -55,6 +55,7 @@
         };
 
         battery = {
+          interval = 1;
           states = {
             good = 95;
             warning = 30;
@@ -62,7 +63,7 @@
           };
           format = "{capacity}% {icon}";
           format-full = "{capacity}% {icon}";
-          format-charging = "{capacity}% ";
+          format-charging = "{capacity}% 󱐋{icon}";
           format-plugged = "{capacity}% ";
           format-alt = "{time} {icon}";
           format-icons = [
@@ -87,11 +88,11 @@
         pulseaudio = {
           format = "{volume}% {icon}";
           format-bluetooth = "{volume}% {icon}";
-          format-bluetooth-muted = " {icon}";
-          format-muted = " (Muted)";
+          format-bluetooth-muted = "󰂲 {icon}";
+          format-muted = "󰝟";
           format-icons = {
             hands-free = "";
-            headset = "";
+            headset = "󰋎";
             phone = "";
             portable = "";
             car = "";
