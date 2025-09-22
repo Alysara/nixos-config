@@ -34,7 +34,7 @@ window#waybar {
     text-shadow: inherit;
 }
 
-.modules-right {
+.modules-right:not(#network.network-extra) {
     background-color: @base;
     padding: 0 5px;
     border-radius: 99px;

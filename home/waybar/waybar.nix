@@ -76,7 +76,7 @@
         };
 
         "network#network-main" = {
-          format-wifi = "[{bandwidthDownBits}] ";
+          format-wifi = "";
           format-ethernet = "";
           tooltip-format = "{ifname} via {gwaddr} ";
           format-linked = "{ifname} (No IP) ";
