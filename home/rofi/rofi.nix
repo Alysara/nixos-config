@@ -57,5 +57,5 @@ in {
     };
   };
 
-  xdg.configFile."rofi/config.rasi".source = ./config.rasi;
+  xdg.configFile."rofi".source = config.rasi;
 }
