@@ -145,6 +145,14 @@
 
   environment.sessionVariables.NIXOS_OZ_ONE_WL = "1";
 
+
+  security.wrappers.btop = {
+    owner = "root";
+    group = "root";
+    source = "${pkgs.btop}/bin/btop";
+    capabilities = "cap_perfmon+ep";
+  };
+  
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
 
