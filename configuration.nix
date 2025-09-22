@@ -96,6 +96,7 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+  programs.nm-applet.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
