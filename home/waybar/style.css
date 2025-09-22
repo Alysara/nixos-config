@@ -62,7 +62,7 @@ window#waybar {
 }
 
 #clock {
-    color: @blue;
+    color: @surface-1;
     padding: 0 2px;
     border-radius: 99px;
 }
