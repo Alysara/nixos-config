@@ -137,6 +137,8 @@
   
   hardware.bluetooth.enable = true;
   
+  services.blueman.enable = true;
+  
   services.displayManager = {
     sessionPackages = [
       inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland

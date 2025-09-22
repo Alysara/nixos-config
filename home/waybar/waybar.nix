@@ -1,7 +1,6 @@
 { pkgs, lib, ... }:
 
 {
-
   catppuccin.waybar = {
     enable = true;
     mode = "createLink";
