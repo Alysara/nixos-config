@@ -51,7 +51,7 @@
           format-linked = "{ifname} (No IP) ";
           format-disconnected = "Disconnected ⚠";
           format-alt = "{essid} ({signalStrength}%) ";
-          interval = 0;
+          interval = 1;
         };
 
         # battery = {
