@@ -9,7 +9,7 @@
     };
     extraConfig = ''
       map ctrl+backspace send_text all \x17
-    ''
+    '';
   };
 
   catppuccin.kitty.enable = true;
