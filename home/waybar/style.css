@@ -40,12 +40,16 @@ window#waybar {
     border-radius: 99px;
 }
 
-#network.network-extra {
+.modules-right > #network.network-extra {
+    all: unset;
+}
+
+/* #network.network-extra {
     background-color: @crust;
     padding: 0 5px;
     margin: 0 5px;
     border-radius: 99px;
-}
+} */
 
 #clock,
 #battery,
