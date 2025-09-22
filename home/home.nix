@@ -83,8 +83,9 @@
   programs.fish.enable = true;
   catppuccin.fish.enable = true;
 
+  programs.proton-vpn-gui.enable = true;
+
   services.blueman-applet.enable = true;
-  catppuccin.blueman.enable = true;
 
   programs.vesktop.enable = true;
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
