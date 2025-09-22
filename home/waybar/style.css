@@ -34,10 +34,16 @@ window#waybar {
     text-shadow: inherit;
 }
 
-.modules-right:not(#network.network-extra) {
+.modules-right {
     background-color: @base;
     padding: 0 5px;
     border-radius: 99px;
+}
+
+#network.network-extra.modules-right {
+    background-color: initial;
+    padding: initial;
+    border-radius: initial;
 }
 
 #clock,
