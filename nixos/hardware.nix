@@ -11,7 +11,7 @@
     extraPackages = with pkgs; [
       intel-media-driver
       vpl-gpu-rt
-    ]
+    ];
   };
   services.xserver.videoDrivers = [ "nvidia" "intel" ];
   hardware.nvidia.open = true;
