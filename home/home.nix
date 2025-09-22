@@ -50,6 +50,7 @@
     wl-clipboard
     lshw
     inputs.zen-browser.packages."${system}".default
+    brightnessctl
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
