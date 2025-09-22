@@ -44,7 +44,6 @@
   home.packages = with pkgs; [
     wl-clipboard
     inputs.zen-browser.packages."${system}".default
-    protonvpn-gui
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -86,7 +85,7 @@
 
   services.blueman-applet.enable = true;
 
-  programs.nm-applet.enable = true;
+  # programs.nm-applet.enable = true;
 
   programs.vesktop.enable = true;
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
