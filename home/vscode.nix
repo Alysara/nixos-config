@@ -10,10 +10,10 @@
       ];
 
       userSettings = {
-        "explorer.confirmDragAndDrop": false,
-        "files.autoSave": "afterDelay",
-        "workbench.colorTheme": "Catppuccin Mocha",
-        "explorer.confirmDelete": false
+        "explorer.confirmDragAndDrop" = false;
+        "files.autoSave" = "afterDelay";
+        "workbench.colorTheme" = "Catppuccin Mocha";
+        "explorer.confirmDelete" = false;
       };
     };
 
