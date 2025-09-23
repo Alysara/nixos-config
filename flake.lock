@@ -160,6 +160,36 @@
         "type": "github"
       }
     },
+    "hypredge": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ],
+        "nixpkgs": [
+          "hypredge",
+          "hyprland",
+          "nixpkgs"
+        ],
+        "systems": [
+          "hypredge",
+          "hyprland",
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1756320751,
+        "narHash": "sha256-v/9ccTN7FYiLpFOeX4bQ7CbwLDYgfQTmq/i6vjLyS3U=",
+        "owner": "CyrenArkade",
+        "repo": "hypredge",
+        "rev": "f445a2cafab93720a4983c09d55c5e3af22f8ba0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "CyrenArkade",
+        "repo": "hypredge",
+        "type": "github"
+      }
+    },
     "hyprgraphics": {
       "inputs": {
         "hyprutils": [
@@ -464,6 +494,7 @@
       "inputs": {
         "catppuccin": "catppuccin",
         "home-manager": "home-manager",
+        "hypredge": "hypredge",
         "hyprland": "hyprland",
         "nixpkgs": "nixpkgs_3",
         "zen-browser": "zen-browser"
