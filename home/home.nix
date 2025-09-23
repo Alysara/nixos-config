@@ -13,7 +13,6 @@
     ./fonts.nix
     ./vscode.nix
     ./zen.nix
-    ./shell.nix
   ];
 
   catppuccin = {
