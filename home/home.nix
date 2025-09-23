@@ -8,6 +8,7 @@
     ./waybar/waybar.nix
     ./rofi/rofi.nix
     ./kitty/kitty.nix
+    ./vesktop/vesktop.nix
     ./satty.nix
     ./fonts.nix
     ./vscode.nix
