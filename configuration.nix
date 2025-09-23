@@ -170,4 +170,10 @@
   services.thermald.enable = true;
   # services.tlp.enable = true;
 
+  services.libredns.enable = true;
+
+  networking.nameservers = [
+    "127.0.0.1"  # Point to your local LibreDNS instance
+  ];
+
 }
