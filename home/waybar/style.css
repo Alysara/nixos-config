@@ -67,7 +67,6 @@ window#waybar {
     border-radius: 99px;
 } */
 
-#clock,
 #battery,
 #cpu,
 #memory,
@@ -91,9 +90,8 @@ window#waybar {
 
 #clock {
     color: @mauve;
-    background-color: @surface-0;
-    padding: 0 2px;
-    /* margin-left: 10px; */
+    /* background-color: alpha(@surface1, 0.4); */
+    padding: 0 0px;
     font-weight: bold;
     border-radius: 99px;
 }
