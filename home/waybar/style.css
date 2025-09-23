@@ -34,10 +34,15 @@ window#waybar {
     text-shadow: inherit;
 }
 
-.modules-right > *:not(:first-child)  {
+.modules-right {
     background-color: @base;
     padding: 0 5px;
     border-radius: 99px;
+}
+
+#network.network-extra {
+    padding: 0 0px;
+    border-radius: 0px;
 }
 
 
