@@ -54,6 +54,8 @@
     unzip
     brightnessctl
     jq
+
+    python312
     # inputs.zen-browser.packages."{$system}".default
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
