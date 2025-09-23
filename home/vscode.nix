@@ -8,6 +8,7 @@
         jnoortheen.nix-ide
         catppuccin.catppuccin-vsc
         ms-python.python
+        arrterian.nix-env-selector
       ];
 
       userSettings = {
