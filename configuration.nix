@@ -109,11 +109,11 @@
     wget
     git
     networkmanagerapplet
+    wireguard-tools
     protonvpn-gui
   ];
 
   networking.firewall.checkReversePath = false;
-  environment.systemPackages = with pkgs; [wireguard-tools protonvpn-gui];
 
 
   # Some programs need SUID wrappers, can be configured further or are
