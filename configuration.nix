@@ -172,8 +172,5 @@
 
   services.libredns.enable = true;
 
-  networking.nameservers = [
-    "127.0.0.1"  # Point to your local LibreDNS instance
-  ];
 
 }
