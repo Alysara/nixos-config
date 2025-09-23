@@ -108,6 +108,7 @@
     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
+    protonvpn-gui
   ];
 
 
@@ -169,8 +170,6 @@
   powerManagement.enable = true;
   services.thermald.enable = true;
   # services.tlp.enable = true;
-
-  services.libredns.enable = true;
 
 
 }
