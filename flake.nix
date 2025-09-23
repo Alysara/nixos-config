@@ -11,6 +11,12 @@
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
+
+    hypredge = {
+      url = "github:CyrenArkade/hypredge";
+      # url = "git+file:///home/cyren/dev/cpp/hypredge";
+      inputs.hyprland.follows = "hyprland";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }:

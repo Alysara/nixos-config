@@ -1,6 +1,10 @@
 { inputs, pkgs, fetchurl, lib, ... }:
 
 {
+  imports = [
+    ./hypredge.nix
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
