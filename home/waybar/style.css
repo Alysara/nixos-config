@@ -35,9 +35,21 @@ window#waybar {
 }
 
 .modules-right {
-    background-color: @base;
     padding: 0 5px;
-    border-radius: 99px;
+}
+
+.modules-right > *:not(:first-child) {
+    background-color: @base;
+}
+
+.modules-right > :nth-child(2) {
+    border-top-left-radius: 99px;
+    border-bottom-left-radius: 99px;
+}
+
+.modules-right > :last-child {
+    border-top-right-radius: 99px;
+    border-bottom-right-radius: 99px;
 }
 
 #network.network-extra {
