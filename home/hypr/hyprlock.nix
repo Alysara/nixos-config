@@ -33,7 +33,7 @@
 
       background = {
         monitor = "";
-        path = toString ../../images/xilmo3.jpg;
+        path = toString ../../images/abstract-city.jpg;
         blur_passes = 2;
         color = "rgb(a093b2)";
       };
