@@ -28,7 +28,7 @@
         ];
 
         modules-center = [
-          "hyprland/workspaces"
+          "hyprland/workspaces#roman"
         ];
 
         modules-right = [

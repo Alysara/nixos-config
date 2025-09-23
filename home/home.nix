@@ -143,8 +143,8 @@
     shellAliases = {
       ll = "ls -l";
       ".." = "cd ..";
-      buildhome = "home-manager switch --flake ~/.dotfiles";
-      buildnix = "sudo nixos-rebuild switch --flake ~/.dotfiles";
+      # buildhome = "home-manager switch --flake ~/.dotfiles";
+      # buildnix = "sudo nixos-rebuild switch --flake ~/.dotfiles";
     };
   };
 
