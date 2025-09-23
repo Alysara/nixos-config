@@ -11,7 +11,7 @@
     ./satty.nix
     ./fonts.nix
     ./vscode.nix
-    # ./zen.nix
+    ./zen.nix
   ];
 
   catppuccin = {
@@ -52,9 +52,7 @@
     lshw
     unzip
     brightnessctl
-
-    inputs.zen-browser.packages."${system}".default
-
+    # inputs.zen-browser.packages."{$system}".default
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
