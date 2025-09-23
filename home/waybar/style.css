@@ -51,7 +51,7 @@ window#waybar {
 .modules-right > :last-child {
     border-top-right-radius: 99px;
     border-bottom-right-radius: 99px;
-    margin-right: 0 px;
+    margin-right: 0px;
 }
 
 #network.network-extra {
