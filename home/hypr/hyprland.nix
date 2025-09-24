@@ -64,8 +64,8 @@
       decoration = {
         rounding = 10;
         rounding_power = 2;
-        active_opacity = 0.5;
-        inactive_opacity = 0.4;
+        active_opacity = 0.75;
+        inactive_opacity = 0.5;
         fullscreen_opacity = 1;
         dim_modal = true;
         dim_inactive = true;
