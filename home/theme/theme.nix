@@ -3,10 +3,6 @@
 {
   home.packages = with pkgs; [
     dconf
-    gtk3
-    sassc
-    gtk-engine-murrine
-    gnome-themes-extra
   ];
 
   gtk = {
