@@ -15,6 +15,7 @@
     ./vscode.nix
     ./zen.nix
     ./cursor.nix
+    ./starship.nix
   ];
 
   catppuccin = {

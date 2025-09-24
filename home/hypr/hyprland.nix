@@ -5,6 +5,7 @@
     # ./hypredge.nix
     ./hyprlock.nix
     ./hyprpaper.nix
+    ./hypridle.nix
   ];
 
   wayland.windowManager.hyprland = {
