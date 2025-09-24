@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-set -e
 
-fastcommit "$1"
+git add ~/.dotfiles
 home-manager switch --flake ~/.dotfiles
 

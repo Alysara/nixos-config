@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -e
 
-fastcommit "$1"
+git add ~/.dotfiles
 sudo nixos-rebuild switch --flake ~/.dotfiles

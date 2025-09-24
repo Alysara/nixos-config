@@ -57,7 +57,8 @@
     unzip
     brightnessctl
     jq
-
+    inxi
+    
     # inputs.zen-browser.packages."{$system}".default
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
