@@ -9,12 +9,12 @@
     ./rofi/rofi.nix
     ./kitty/kitty.nix
     ./vesktop/vesktop.nix
+    ./theme/theme.nix
     ./satty.nix
     ./fonts.nix
     ./vscode.nix
     ./zen.nix
     ./cursor.nix
-    # ./theme.nix
   ];
 
   catppuccin = {
