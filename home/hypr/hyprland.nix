@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./hypredge.nix
+    # ./hypredge.nix
     ./hyprlock.nix
     ./hyprpaper.nix
   ];
