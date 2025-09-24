@@ -25,7 +25,7 @@
       ];
 
       windowrule = [
-        "workspace 3 silent, class:^vesktop$"
+        "workspace 1 silent, class:^vesktop$"
       ];
     
       xwayland.force_zero_scaling = true;
