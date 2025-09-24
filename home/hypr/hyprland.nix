@@ -23,6 +23,10 @@
         "3, persistent:true"
         "special:mini, gapsout:128"
       ];
+
+      windowrule = [
+        "workspace 3 silent, class:^vesktop$"
+      ];
     
       xwayland.force_zero_scaling = true;
 
