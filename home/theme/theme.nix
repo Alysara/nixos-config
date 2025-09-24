@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     dconf
+    gtk-query-settings
   ];
 
   gtk = {
