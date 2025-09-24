@@ -31,7 +31,7 @@
         "[workspace 2] zen"
         "nm-applet"
         "protonvpn-gui"
-      ]
+      ];
 
       general = {
         border_size = 1;
