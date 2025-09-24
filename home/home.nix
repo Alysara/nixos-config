@@ -9,7 +9,7 @@
     ./rofi/rofi.nix
     ./kitty/kitty.nix
     ./vesktop/vesktop.nix
-    # ./theme/theme.nix
+    ./theme/theme.nix
     ./satty.nix
     ./fonts.nix
     ./vscode.nix
