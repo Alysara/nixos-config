@@ -26,6 +26,13 @@
     
       xwayland.force_zero_scaling = true;
 
+      exec-once = [
+        "[workspace 1] vesktop"
+        "[workspace 2] zen"
+        "nm-applet"
+        "protonvpn-gui"
+      ]
+
       general = {
         border_size = 1;
         no_border_on_floating = false;
@@ -57,9 +64,9 @@
       decoration = {
         rounding = 10;
         rounding_power = 2;
-        active_opacity = 0.9;
-        inactive_opacity = 0.8;
-        fullscreen_opacity = 0.95;
+        active_opacity = 0.5;
+        inactive_opacity = 0.4;
+        fullscreen_opacity = 1;
         dim_modal = true;
         dim_inactive = true;
         dim_strength = 0.2;
