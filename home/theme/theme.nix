@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [
     dconf
-    gtk
+    gtk3-x11
   ];
 
   gtk = {
