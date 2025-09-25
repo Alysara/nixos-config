@@ -79,7 +79,6 @@
         dim_around = 0.4;
         # screen_shader = [insert path here]
         border_part_of_window = true;
-
         blur = {
           enabled = true;
           size = 8;

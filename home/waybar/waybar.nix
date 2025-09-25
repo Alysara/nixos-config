@@ -19,7 +19,7 @@
         position = "top";
         height = 26;
         margin-top = 8;
-        margin-bottom = 6;
+        margin-bottom = 0;
         margin-left = 13;
         margin-right = 13;
 

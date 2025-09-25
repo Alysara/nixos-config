@@ -21,7 +21,7 @@
         VolumeBooster.enabled = true;
         ClearURLs.enabled = true;
         ExpressionCloner.enabled = true;
-        FriendsSize.enabled = true;
+        FriendsSince.enabled = true;
         MemberCount.enabled = true;
         MessageClickActions.enabled = true;
         NewGuildSettings.enabled = true;
@@ -34,6 +34,14 @@
         ViewIcons.enabled = true;
         WhoReacted.enabled = true;
         YoutubeAdblock.enabled = true;
+        BetterGifPicker.enabled = true;
+        FavoriteGifSearch.enabled = true;
+        BetterSessions.enabled = true;
+        BetterSettings.enabled = true;
+        CallTimer.enabled = true;
+        ImplicitRelationships.enabled = true;
+        AlwaysExpandRoles.enabled = true;
+        AlwaysTrust.enabled = true;
       };
     };
   };

@@ -58,7 +58,12 @@
     brightnessctl
     jq
     inxi
-    
+
+
+    libreoffice-qt
+    hunspell
+    hunspellDicts.en_US
+
     # inputs.zen-browser.packages."{$system}".default
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -81,9 +86,6 @@
 
   programs.btop = {
     enable = true;
-    package = pkgs.btop.override {
-      cudaSupport = true;
-    };
     settings.disks_filter = "exclude=/nix /home";
   };
   catppuccin.btop.enable = true;

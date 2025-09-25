@@ -155,11 +155,10 @@
 
   environment.sessionVariables.NIXOS_OZ_ONE_WL = "1";
 
-
   security.wrappers.btop = {
     owner = "root";
     group = "root";
-    source = "${pkgs.btop}/bin/btop";
+    source = "${pkgs.btop.override { cudaSupport = true; } }/bin/btop";
     capabilities = "cap_perfmon+ep";
   };
   
