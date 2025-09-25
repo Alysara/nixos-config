@@ -16,6 +16,7 @@
     ./zen.nix
     ./cursor.nix
     ./starship.nix
+    ./yazi.nix
   ];
 
   catppuccin = {
@@ -89,10 +90,6 @@
     settings.disks_filter = "exclude=/nix /home";
   };
   catppuccin.btop.enable = true;
-
-
-  programs.yazi.enable = true;
-  catppuccin.yazi.enable = true;
 
   services.swaync.enable = true;
   catppuccin.swaync.enable = true;

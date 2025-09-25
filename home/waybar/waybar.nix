@@ -76,6 +76,7 @@
         };
 
         "network#network-main" = {
+          interface = "wlp0s20f3";
           format-wifi = "";
           format-ethernet = "";
           tooltip-format = "{ifname} via {gwaddr} ";
@@ -86,6 +87,7 @@
         };
 
         "network#network-extra" = {
+          interface = "wlp0s20f3";
           format = "{bandwidthDownBits}";
           interval = 1;
         };
