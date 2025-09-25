@@ -59,6 +59,7 @@
     brightnessctl
     jq
     inxi
+    fastfetch
 
 
     libreoffice-qt
@@ -83,6 +84,7 @@
     (pkgs.writeShellScriptBin "fastcommit" (builtins.readFile ../scripts/fastcommit.sh))
     (pkgs.writeShellScriptBin "buildnix" (builtins.readFile ../scripts/buildnix.sh))
     (pkgs.writeShellScriptBin "buildhome" (builtins.readFile ../scripts/buildhome.sh))
+    (pkgs.writeShellScriptBin "add-extension" (builtins.readFile ../scripts/add-extension.sh))
   ];
 
   programs.btop = {
