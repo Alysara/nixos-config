@@ -18,7 +18,7 @@
         Status = "locked";
       });
     in {
-      AutofillAddressEnabled = true;
+      AutofillAddressEnabled = false;
       AutofillCreditCardEnabled = false;
       DisableAppUpdate = true;
       DisableFeedbackCommands = true;
@@ -42,7 +42,7 @@
       SanitizeOnShutdown = {
         Cache = true;
         Cookies = true;
-        FormData = false;
+        FormData = true;
         History = false;
         Sessions = false;
         SiteSettings = false;
@@ -66,6 +66,7 @@
       Preferences = mkLockedAttrs {
         "browser.low_commit_space_threshold_percent" = 100;
         "browser.tabs.warnOnClose" = false;
+        "browser.ctrlTab.sortByRecentlyUsed" = true;
       };
     };
   };
