@@ -3,6 +3,11 @@
 let
   inherit (config.lib.formats.rasi) mkLiteral;
 in {
+
+  xdg.configFile."/colors.rasi".source = ./colors.rasi;
+	xdg.configFile."/style.rasi".source = ./style.rasi;
+
+
   programs.rofi = {
     enable = true;
     extraConfig = {
@@ -13,27 +18,29 @@ in {
       drun-display-format = "{name}";
     };
 
-    theme = {
-      "*" = {
-        background = mkLiteral "@mantle";
-        lightfg = mkLiteral "@lavender";
-        placeholder = mkLiteral "@overlay0";
-      };
+  #   theme = {
+  #     "*" = {
+  #       background = mkLiteral "@mantle";
+  #       lightfg = mkLiteral "@lavender";
+  #       placeholder = mkLiteral "@overlay0";
+  #     };
 
-      window = {
-        width = mkLiteral "20em";
-        border-radius = mkLiteral "20";
-      };
+  #     window = {
+  #       width = mkLiteral "20em";
+  #       border-radius = mkLiteral "20";
+  #     };
 
-      entry.placeholder-color = mkLiteral "@placeholder";
+  #     entry.placeholder-color = mkLiteral "@placeholder";
 
-      num-rows.text-color = mkLiteral "@placeholder";
-      num-filtered-rows.text-color = mkLiteral "@placeholder";
-      textbox-num-set.text-color = mkLiteral "@placeholder";
-    };
+  #     num-rows.text-color = mkLiteral "@placeholder";
+  #     num-filtered-rows.text-color = mkLiteral "@placeholder";
+  #     textbox-num-set.text-color = mkLiteral "@placeholder";
+  #   };
+
+    theme = "~/.config/rofi/colors.rasi";
   };
 
-  catppuccin.rofi.enable = true;
+  # catppuccin.rofi.enable = true;
 
 
   wayland.windowManager.hyprland.settings = {

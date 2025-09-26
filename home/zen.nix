@@ -77,9 +77,7 @@
 
         "privacy.firstparty.isolate" = true;
         "geo.enabled" = false;
-        "dom.event.clipboardevents.enabled" = false;
-        
-
+        # "dom.event.clipboardevents.enabled" = false;
       };
     };
 

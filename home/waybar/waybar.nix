@@ -33,8 +33,8 @@
 
         modules-right = [
           "network#network-extra"
-          "custom/swaync"
           "tray"
+          "custom/swaync"
           "pulseaudio"
           "network#network-main"
           "battery"
@@ -132,6 +132,10 @@
           on-click-right = "swaync-client -d -sw";
           escape = true;
         };
+
+        # "custom/hardware" = {
+
+        # }
 
         # battery = {
         #   states = {
