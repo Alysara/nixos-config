@@ -4,8 +4,8 @@ let
   inherit (config.lib.formats.rasi) mkLiteral;
 in {
 
-  xdg.configFile."/colors.rasi".source = ./colors.rasi;
-	xdg.configFile."/style.rasi".source = ./style.rasi;
+  xdg.configFile."rofi/colors.rasi".source = ./colors.rasi;
+	xdg.configFile."rofi/style.rasi".source = ./style.rasi;
 
 
   programs.rofi = {
