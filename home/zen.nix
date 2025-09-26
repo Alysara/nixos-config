@@ -30,10 +30,23 @@
       OfferToSaveLogins = false;
       SkipTermsOfUse = true;
       SearchEngines.Default = "DuckDuckGo";
+      HttpsOnlyMode = "force_enabled";
 
       DNSOverHTTPS = {
         Enabled = true;
-        ProviderURL = "noads.libredns.gr";
+        ProviderURL = "https://doh.libredns.gr/dns-query";
+        Fallback = false;
+        Locked = true;
+      };
+
+      SanitizeOnShutdown = {
+        Cache = true;
+        Cookies = true;
+        FormData = false;
+        History = false;
+        Sessions = false;
+        SiteSettings = false;
+        Locked = true;
       };
 
       EnableTrackingProtection = {
@@ -41,6 +54,8 @@
         Locked = true;
         Cryptomining = true;
         Fingerprinting = true;
+        EmailTracking = true;
+        Category = "strict";
       };
 
       ExtensionSettings = mkExtensionSettings {
