@@ -60,6 +60,7 @@
     jq
     inxi
     fastfetch
+    sqlitestudio
 
 
     libreoffice-qt

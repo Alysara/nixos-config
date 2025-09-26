@@ -42,6 +42,7 @@
         ImplicitRelationships.enabled = true;
         AlwaysExpandRoles.enabled = true;
         AlwaysTrust.enabled = true;
+        PlainFolderIcon.enabled = true;
       };
     };
   };

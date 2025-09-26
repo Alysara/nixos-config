@@ -51,9 +51,9 @@
         "col.nogroup_border_active" = "0xffff00ff";
         layout = "dwindle";
         no_focus_fallback = false;
-        resize_on_border = true;
+        resize_on_border = false;
         extend_border_grab_area = 15;
-        hover_icon_on_border = true;
+        hover_icon_on_border = false;
         allow_tearing = false;
         resize_corner = 0;
 
@@ -116,8 +116,6 @@
         sensitivity = 0;
 
       };
-
-
 
       "$mainMod" = "SUPER";
 
