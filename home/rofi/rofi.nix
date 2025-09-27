@@ -37,7 +37,7 @@ in {
   #     textbox-num-set.text-color = mkLiteral "@placeholder";
   #   };
 
-    theme = "~/.config/rofi/colors.rasi";
+    theme = "~/.config/rofi/style.rasi";
   };
 
   # catppuccin.rofi.enable = true;
