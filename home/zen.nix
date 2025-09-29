@@ -43,7 +43,7 @@
         Cache = true;
         Cookies = true;
         FormData = true;
-        History = false;
+        History = true;
         Sessions = false;
         SiteSettings = false;
         Locked = true;

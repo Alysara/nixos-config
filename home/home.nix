@@ -61,6 +61,7 @@
     inxi
     fastfetch
     sqlitestudio
+    vivaldi
 
     libreoffice-qt
     hunspell
