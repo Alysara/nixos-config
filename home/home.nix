@@ -62,6 +62,7 @@
     fastfetch
     sqlitestudio
     vivaldi
+    altair
 
     libreoffice-qt
     hunspell
