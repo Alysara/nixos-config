@@ -17,6 +17,7 @@
     ./cursor.nix
     ./starship.nix
     ./yazi.nix
+    ./git.nix
   ];
 
   catppuccin = {
@@ -62,7 +63,6 @@
     fastfetch
     sqlitestudio
     vivaldi
-    altair
 
     libreoffice-qt
     hunspell

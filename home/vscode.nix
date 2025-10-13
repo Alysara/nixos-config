@@ -9,6 +9,8 @@
         catppuccin.catppuccin-vsc
         ms-python.python
         arrterian.nix-env-selector
+        ms-vscode.cmake-tools
+        # quarto.quarto
       ];
 
       userSettings = {

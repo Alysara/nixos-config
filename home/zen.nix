@@ -66,26 +66,91 @@
       };
 
       Preferences = mkLockedAttrs {
-        "browser.low_commit_space_threshold_percent" = 100;
-        "browser.tabs.warnOnClose" = false;
-        "browser.ctrlTab.sortByRecentlyUsed" = true;
+        "browser.low_commit_space_threshold_percent" = 100; # Make memory management aggressive; no wasteful memory usage
+        "browser.tabs.warnOnClose" = false; # Remove annoying warning
+        "browser.ctrlTab.sortByRecentlyUsed" = true; # Better ctrl + tab behavior
 
+        # Anti-fingerprinting stuff
         "privacy.resistFingerprinting" = true;
         "privacy.resistFingerprinting.randomization.canvas.use_siphash" =	true;	
         "privacy.resistFingerprinting.randomization.daily_reset.enabled" = true;
         "privacy.resistFingerprinting.randomization.daily_reset.private.enabled" = true;
+        "privacy.resistFingerprinting.block_mozAddonManager" = true;
+        "privacy.spoof_english" = 1;
 
-        "privacy.firstparty.isolate" = true;
+        # Turn off geolocation features
         "geo.enabled" = false;
-        # "dom.event.clipboardevents.enabled" = false;
+        "geo.provider.use_geoclue" = false;
+
+        "browser.newtabpage.activity-stream.showSponsored" = false;
+        "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+        "browser.newtabpage.activity-stream.default.sites" = "https://duckduckgo.com";
+        "browser.discovery.enabled" = false;
+        "extensions.getAddons.showPane" = false;
+        "extensions.htmlaboutaddons.recommendations.enabled" = false;
+
+        "browser.aboutConfig.showWarning" = false; # Remove annoying warning
+        "intl.accept_languages" = "en-US, en";
+        "javascript.use_us_english_locale" = true;
+
+        # "browser.newtabpage.pinned" = false;
+        "breakpad.reportURL" = "";
+        "browser.tabs.crashReporting.sendReport" = false;
+        "browser.crashReports.unsubmittedCheck.autoSubmit2" = false;
+
+        "captivedetect.canonicalURL" = "";
+        "network.captive-portal-service.enabled" = false;
+        "network.connectivity-service.enabled" = false;
+        "network.prefetch-next" = false;
+        "network.dns.disablePrefetch" = false;
+        "network.dns.disablePrefetchFromHTTPS" = false;
+        "network.predictor.enabled" = false;
+        "network.predictor.enable-prefetch" = false;
+
+        "network.http.speculative-parallel-limit" = 0;
+        "browser.places.speculativeConnect.enabled" = false;
+
+        "security.ssl.require_safe_negotiation" = true;
+        "security.tls.enable_0rtt_data" = false;
+        "security.OCSP.enabled" = 1;
+        "security.OCSP.require" = true;
+        "security.cert_pinning.enforcement_level" = 2;
+        "security.remote_settings.crlite_filters.enabled" = true;
+        "security.pki.crlite_mode" = 2;
+        "security.ssl.treat_unsafe_negotiation_as_broken" = true;
+
+        "dom.security.https_only_mode" = true;
+        "dom.security.https_only_mode_send_http_background_request" = false;
+        "browser.xul.error_pages.expert_bad_cert" = true;
+        "browser.sessionstore.privacy_level" = 2;
+
+        "media.peerconnection.ice.proxy_only_if_behind_proxy" = true;
+        "media.peerconnection.ice.default_address_only" = true;
+        "dom.disable_window_move_resize" = true;
+        "browser.download.start_downloads_in_tmp_dir" = true;
+        "browser.helperApps.deleteTempFileOnExit" = true;
+        "browser.uitour.enabled" = false;
+        "devtools.debugger.remote-enabled" = false;
+        "permissions.manager.defaultsUrl" = "";
+
+        "network.IDN_show_punycode" = true;
+        "security.csp.reporting.enabled" = false;
+        "browser.download.useDownloadDir" = false;
+        "browser.download.manager.addToRecentDocs" = false;
+        "browser.download.always_ask_before_handling_new_types" = true;
+        "extensions.enabledScopes" = 5;
+        "browser.link.open_newwindow.restriction" = 0;
+
+        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
+        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
       };
     };
 
     profiles."personal-profile" = {
       settings = {
-        "zen.folders.owned-tabs-in-folder" = true;
-        "zen.welcome-screen.seen" = true;
-        "zen.theme.gradient.show-custom-colors" = true;
+        "zen.folders.owned-tabs-in-folder" = true; # Ensure child tabs stay in parent folders
+        "zen.welcome-screen.seen" = true; # Skip annoying introduction sequence
+        "zen.theme.gradient.show-custom-colors" = true; # See exact colors; more granular than zen's color wheel thing
       };
 
       containersForce = true;
