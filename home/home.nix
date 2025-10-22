@@ -63,10 +63,14 @@
     fastfetch
     sqlitestudio
     vivaldi
+    obs-studio
 
     libreoffice-qt
     hunspell
     hunspellDicts.en_US
+
+    gimp
+    obsidian
 
     # inputs.zen-browser.packages."{$system}".default
 

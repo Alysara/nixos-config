@@ -43,6 +43,7 @@
         AlwaysExpandRoles.enabled = true;
         AlwaysTrust.enabled = true;
         PlainFolderIcon.enabled = true;
+        DisableCallIdle.enabled = true;
       };
     };
   };
