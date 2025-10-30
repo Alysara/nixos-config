@@ -32,9 +32,11 @@
 
   programs.git = {
     enable = true;
-    userName = "Alysara";
-    userEmail = "alysara@proton.me";
-    extraConfig = {
+    settings = {
+      user = {
+        email = "alysara@proton.me";
+        name = "Alysara";
+      };
       init.defaultBranch = "main";
     };
   };
@@ -64,6 +66,7 @@
     sqlitestudio
     vivaldi
     obs-studio
+    # zoom-us
 
     libreoffice-qt
     hunspell

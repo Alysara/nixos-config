@@ -34,7 +34,7 @@
 
       DNSOverHTTPS = {
         Enabled = true;
-        ProviderURL = "https://doh.libredns.gr/dns-query";
+        ProviderURL = "https://doh.libredns.gr/noads";
         Fallback = false;
         Locked = true;
       };
@@ -66,6 +66,7 @@
       };
 
       Preferences = mkLockedAttrs {
+        "browser.tabs.unloadOnLowMemory" = true;
         "browser.low_commit_space_threshold_percent" = 100; # Make memory management aggressive; no wasteful memory usage
         "browser.tabs.warnOnClose" = false; # Remove annoying warning
         "browser.ctrlTab.sortByRecentlyUsed" = true; # Better ctrl + tab behavior
@@ -84,10 +85,27 @@
 
         "browser.newtabpage.activity-stream.showSponsored" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
-        "browser.newtabpage.activity-stream.default.sites" = "https://duckduckgo.com";
+        "browser.topsites.contile.enabled" = false;
+        "browser.topsites.contile.endpoint" = "";
+        "browser.topsites.contile.sov.enabled" = false;
+        "browser.topsites.useRemoteSetting" = false;
+        "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned" = "duckduckgo";
+        "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.searchEngines" = "duckduckgo";
+        "browser.partnerlink.campaign.topsites" = "";
+        "browser.urlbar.sponsoredTopSites" = false;
+        "browser.newtabpage.activity-stream.default.sites" = "";
+        "browser.discovery.sites" = "";
+        "browser.newtabpage.activity-stream.discoverystream.spocTopsitesPlacement.enabled" = false;
+        "browser.newtabpage.pinned" = ''[{"url":"https://duckduckgo.com","label":"DuckDuckGo"}]'';
         "browser.discovery.enabled" = false;
+
+        # "layers.acceleration.disabled" = false;
+        # "layers.acceleration.force-enabled" = true;
+        # "gfx.webrender.all" = true;
+
         "extensions.getAddons.showPane" = false;
         "extensions.htmlaboutaddons.recommendations.enabled" = false;
+
 
         "browser.aboutConfig.showWarning" = false; # Remove annoying warning
         "intl.accept_languages" = "en-US, en";
@@ -120,6 +138,7 @@
         "security.ssl.treat_unsafe_negotiation_as_broken" = true;
 
         "dom.security.https_only_mode" = true;
+        "dom.serviceWorkers.enabled" = false;
         "dom.security.https_only_mode_send_http_background_request" = false;
         "browser.xul.error_pages.expert_bad_cert" = true;
         "browser.sessionstore.privacy_level" = 2;
@@ -151,6 +170,7 @@
         "zen.folders.owned-tabs-in-folder" = true; # Ensure child tabs stay in parent folders
         "zen.welcome-screen.seen" = true; # Skip annoying introduction sequence
         "zen.theme.gradient.show-custom-colors" = true; # See exact colors; more granular than zen's color wheel thing
+        "zen.urlbar.behavior" = "float";
       };
 
       containersForce = true;

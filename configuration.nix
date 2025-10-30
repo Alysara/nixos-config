@@ -154,6 +154,8 @@
 
   environment.sessionVariables.NIXOS_OZ_ONE_WL = "1";
 
+  hardware.enableRedistributableFirmware = true;
+
   security.wrappers.btop = {
     owner = "root";
     group = "root";
@@ -171,6 +173,7 @@
 
   powerManagement.enable = true;
   services.thermald.enable = true;
+  services.tlp.enable = true;
   # services.tlp.enable = true;
 
 
