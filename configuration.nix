@@ -110,7 +110,13 @@
     networkmanagerapplet
     wireguard-tools
     protonvpn-gui
+    clamav
+    intel-gpu-tools
+    htop
   ];
+
+  services.clamav.daemon.enable = true;
+  services.clamav.updater.enable = true;
 
   networking.firewall.checkReversePath = false;
 
@@ -172,9 +178,8 @@
   };
 
   powerManagement.enable = true;
-  services.thermald.enable = true;
+  # services.thermald.enable = true; # This sucks on a XPS 15 9530, research if your model works with this.
   services.tlp.enable = true;
-  # services.tlp.enable = true;
 
 
 }
