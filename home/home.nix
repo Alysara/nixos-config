@@ -66,6 +66,7 @@
     sqlitestudio
     vivaldi
     obs-studio
+    zip
     # zoom-us
 
     libreoffice-qt
