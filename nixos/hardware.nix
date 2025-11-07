@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   hardware.nvidia.prime = {
@@ -16,6 +16,7 @@
   };
   services.xserver.videoDrivers = [ "nvidia" "intel" ];
   hardware.nvidia.open = true;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable; 
 
   hardware = {
     nvidia.modesetting.enable = true;
