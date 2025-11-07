@@ -9,7 +9,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
     catppuccin.url = "github:catppuccin/nix";
 
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake/revert-155-fix/zen-symlink";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
     hypredge = {
@@ -19,13 +19,18 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, zen-browser, ... }:
     let
       inherit (self) outputs;
       lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
+
+    packages.${system}.zen-with-sine = import ./home/zen/zen-with-sine.nix {
+      inherit pkgs zen-browser inputs;
+    };
+
     nixosConfigurations = {
       nixos = lib.nixosSystem {
         inherit system;
