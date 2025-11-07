@@ -1,9 +1,39 @@
-{ inputs, config, ... }:
+{ inputs, config, system, ... }:
 
 {
   imports = [
     inputs.zen-browser.homeModules.default
   ];
+
+  xdg.mimeApps = let
+  value = let
+    zen-browser = inputs.zen-browser.packages.${system}.beta; # or twilight
+  in
+    zen-browser.meta.desktopFileName;
+
+  associations = builtins.listToAttrs (map (name: {
+      inherit name value;
+    }) [
+      "application/x-extension-shtml"
+      "application/x-extension-xhtml"
+      "application/x-extension-html"
+      "application/x-extension-xht"
+      "application/x-extension-htm"
+      "x-scheme-handler/unknown"
+      "x-scheme-handler/mailto"
+      "x-scheme-handler/chrome"
+      "x-scheme-handler/about"
+      "x-scheme-handler/https"
+      "x-scheme-handler/http"
+      "application/xhtml+xml"
+      "application/json"
+      "text/plain"
+      "text/html"
+    ]);
+  in {
+    associations.added = associations;
+    defaultApplications = associations;
+  };
 
   programs.zen-browser = {
     enable = true;
@@ -106,7 +136,6 @@
         "extensions.getAddons.showPane" = false;
         "extensions.htmlaboutaddons.recommendations.enabled" = false;
 
-
         "browser.aboutConfig.showWarning" = false; # Remove annoying warning
         "intl.accept_languages" = "en-US, en";
         "javascript.use_us_english_locale" = true;
@@ -162,6 +191,10 @@
 
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
+
+        # Get rid of annoying swipe gestures that too often mess up my page.
+        "browser.gesture.swipe.left" = "";
+        "browser.gesture.swipe.right" = "";
       };
     };
 
@@ -171,6 +204,7 @@
         "zen.welcome-screen.seen" = true; # Skip annoying introduction sequence
         "zen.theme.gradient.show-custom-colors" = true; # See exact colors; more granular than zen's color wheel thing
         "zen.urlbar.behavior" = "float";
+        "zen.tabs.show-newtab-vertical" = false; # Removes the new tab button, if you don't use ctrl + T, you probably don't want this.
       };
 
       containersForce = true;
@@ -200,7 +234,7 @@
           id = "c6de089c-410d-4206-961d-ab11f988d40a";
           position = 1000;
           container = containers."Personal".id;
-          icon = "";
+          icon = "🫆";
           # spacesForce = true;
           theme = {
             type = "gradient";
@@ -213,7 +247,7 @@
         "Music" = {
           id = "cdd10fab-4fc5-494b-9041-325e5759195b";
           container = containers."Music".id;
-          icon = "";
+          icon = "🎵";
           position = 2000;
           theme = {
             type = "gradient";
@@ -225,7 +259,7 @@
         };
         "School" = {
           id = "78aabdad-8aae-4fe0-8ff0-2a0c6c4ccc24";
-          icon = "󰑴";
+          icon = "🎓";
           container = containers."School".id;
           position = 3000;
           theme = {
