@@ -1,13 +1,29 @@
-{pkgs, ... }: 
-
-
+{ pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    xdg-desktop-portal-termfilechooser
-  ];
+  programs.yazi = {
+    enable = true;
+    settings = {
+      opener = {
+        zen = [
+          { run = "zen \"$@\""; desc = "Zen Browser"; }
+        ];
+      };
+      open = {
+        rules = [
+          {
+            name = "*.html";
+            use = "zen";
+          }
+          {
+            name = "*.htm";
+            use = "zen";
+          }
+        ];
+      };
+    };
+  };
 
-  programs.yazi.enable = true;
   catppuccin.yazi.enable = true;
 
   xdg.configFile."xdg-desktop-portal-termfilechooser/config" = {
