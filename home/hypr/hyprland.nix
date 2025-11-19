@@ -4,7 +4,7 @@ let
   stepBrightness = pkgs.writeShellScriptBin "step-brightness" ''
     #!/usr/bin/env bash
 
-    steps=(0 1 2 3 5 10 15 25 40 60 80 95 100)
+    steps=(0 1 2 3 5 10 15 25 40 60 80 100)
 
     current=$(brightnessctl -d intel_backlight g)
     max=$(brightnessctl -d intel_backlight m)
