@@ -99,6 +99,9 @@
 
   programs.btop = {
     enable = true;
+    package = pkgs.btop.override {
+      cudaSupport = true;
+    };
     settings.disks_filter = "exclude=/nix /home";
   };
   catppuccin.btop.enable = true;
