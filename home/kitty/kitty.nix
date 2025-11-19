@@ -3,10 +3,10 @@
 {
   programs.kitty = {
     enable = true;
-    # setttings = {
-    #   confirm_os_window_close = false;
-    #   enable_audio_bell = false;
-    # };
+    settings = {
+      confirm_os_window_close = 0;
+      # enable_audio_bell = 0;
+    };
     # extraConfig = ''
     #  map ctrl+a select_all
     # '';
