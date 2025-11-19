@@ -19,6 +19,7 @@
     settings = {
       general = {
         hide_cursor = true;
+        fail_timeout = 500;
       };
 
       animations = {
