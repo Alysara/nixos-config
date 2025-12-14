@@ -67,11 +67,15 @@
     vivaldi
     obs-studio
     zip
+    vlc
+    kdePackages.kdenlive
+    # clion
     # zoom-us
 
     libreoffice-qt
     hunspell
     hunspellDicts.en_US
+    prismlauncher
 
     gimp
     obsidian
@@ -92,8 +96,8 @@
     # '')
 
     (pkgs.writeShellScriptBin "fastcommit" (builtins.readFile ../scripts/fastcommit.sh))
-    (pkgs.writeShellScriptBin "buildnix" (builtins.readFile ../scripts/buildnix.sh))
-    (pkgs.writeShellScriptBin "buildhome" (builtins.readFile ../scripts/buildhome.sh))
+    # (pkgs.writeShellScriptBin "buildnix" (builtins.readFile ../scripts/buildnix.sh))
+    # (pkgs.writeShellScriptBin "buildhome" (builtins.readFile ../scripts/buildhome.sh))
     (pkgs.writeShellScriptBin "add-extension" (builtins.readFile ../scripts/add-extension.sh))
   ];
 
@@ -163,10 +167,11 @@
     shellAliases = {
       ll = "ls -l";
       ".." = "cd ..";
-      # buildhome = "home-manager switch --flake ~/.dotfiles";
-      # buildnix = "sudo nixos-rebuild switch --flake ~/.dotfiles";
+      buildhome = "home-manager switch --flake ~/.dotfiles";
+      buildnix = "sudo nixos-rebuild switch --flake ~/.dotfiles";
+      nixdevelop = "nix develop path:.";
     };
   };
-
+  
   programs.home-manager.enable = true;
 }

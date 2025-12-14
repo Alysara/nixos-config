@@ -30,12 +30,12 @@ in {
       ", Print, exec, ${takeScreenshot}" # printscreen
     ];
     windowrule = [
-      "noanim, class:^(com.gabm.satty)$"
-      # "float, class:^(com.gabm.satty)$"
-      # "move 0 0, class:^(com.gabm.satty)$"
-      # "pin, class:^(com.gabm.satty)$"
-      # "size 100% 100%, class:^(com.gabm.satty)$"
-      # "noinitialfocus, class:^(com.gabm.satty)$"
+      "no_anim 1, match:class ^(com.gabm.satty)$"
+      # "float, match:class ^(com.gabm.satty)$"
+      # "move 0 0, match:class ^(com.gabm.satty)$"
+      # "pin, match:class ^(com.gabm.satty)$"
+      # "size 100% 100%, match:class ^(com.gabm.satty)$"
+      # "noinitialfocus, match:class ^(com.gabm.satty)$"
     ];
   };
 }

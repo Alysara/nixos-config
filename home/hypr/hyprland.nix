@@ -59,7 +59,7 @@ in {
       ];
 
       windowrule = [
-        "workspace 1 silent, class:^vesktop$"
+        # "workspace 1 silent, class:^vesktop$"
       ];
     
       xwayland.force_zero_scaling = true;
@@ -73,7 +73,7 @@ in {
 
       general = {
         border_size = 1;
-        no_border_on_floating = false;
+        # no_border_on_floating = false;
         gaps_in = 5;
         gaps_out = 10;
         float_gaps = 0;
@@ -141,13 +141,11 @@ in {
           # offset = "[0, 0]"; needs a vec2:stof, figure out how to make ?
           scale = 1;
         };
-
       };
 
       input = {
         kb_layout = "us";
         sensitivity = 0;
-
       };
 
       "$mainMod" = "SUPER";

@@ -44,6 +44,7 @@
         AlwaysTrust.enabled = true;
         PlainFolderIcon.enabled = true;
         DisableCallIdle.enabled = true;
+        VoiceMessages.enabled = true;
       };
     };
   };
