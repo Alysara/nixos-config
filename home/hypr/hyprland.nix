@@ -69,6 +69,7 @@ in {
         "[workspace 2] zen"
         "nm-applet"
         "protonvpn-gui"
+        "wl-paste --watch cliphist store"
       ];
 
       general = {
@@ -169,7 +170,6 @@ in {
         ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
         ",XF86MonBrightnessUp, exec, step-brightness up"
         ",XF86MonBrightnessDown, exec, step-brightness down"
-
       ];
 
       bindl = [
@@ -185,12 +185,14 @@ in {
         "$mainMod, Z, exec, zen"
         "$mainMod, C, exec, code"
         "$mainMod, R, exec, kitty fish -C y"
-        "$mainMod, Escape, exec, ${pkgs.hdrop}/bin/hdrop -f -p t -g 0 -h 40 -w 67 kitty --class kitty_hdrop"
+        "$mainMod, B, exec, kitty btop"
+        "$mainMod, T, exec, ${pkgs.hdrop}/bin/hdrop -f -p t -g 0 -h 40 -w 67 kitty --class kitty_hdrop"
 
         "$mainMod, Q, killactive,"
         "$mainMod, M, exit,"
         "$mainMod, F, fullscreen,"
-        "$mainMod, V, togglefloating,"
+        "$mainMod, Escape, togglefloating,"
+        "$mainMod, V, exec, rofi -modi clipboard:${pkgs.cliphist}/bin/cliphist-rofi-img  -show clipboard -show-icons"
         "$mainMod, P, pseudo,"
         "$mainMod, J, togglesplit,"
 

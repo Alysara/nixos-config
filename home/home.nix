@@ -162,6 +162,15 @@
   #  buildnix = "sudo nixos-rebuild switch --flake ~/.dotfiles";
   #};
 
+  services.cliphist = {
+    enable = true;
+    allowImages = true;
+    extraOptions = [
+      "-max-items" "5"
+      "-max-dedupe-search" "10"
+    ];
+  };
+
   programs.bash = {
     enable = true; 
     shellAliases = {

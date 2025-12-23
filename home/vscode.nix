@@ -28,6 +28,7 @@
         "terminal.integrated.fontLigatures.enabled" = true;
 
         "git.confirmSync" = false;
+        "workbench.editor.empty.hint" = "hidden";
         
         # "C_Cpp.default.cppStandard" = "c++23";
         # "C_Cpp.default.intelliSenseMode" = "linux-clang-x64";

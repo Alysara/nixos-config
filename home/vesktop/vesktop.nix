@@ -45,6 +45,7 @@
         PlainFolderIcon.enabled = true;
         DisableCallIdle.enabled = true;
         VoiceMessages.enabled = true;
+        CustomRPC.enabled = true;
       };
     };
   };
