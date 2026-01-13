@@ -19,6 +19,7 @@ in {
           fit_mode = "cover";  # Optional: cover, contain, or tile
         }
       ];
+      splash = false;
     };
   };
 }
