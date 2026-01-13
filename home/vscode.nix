@@ -15,7 +15,7 @@
         ms-vscode.cpptools
         # ms-vscode.cpptools-themes
         # llvm-vs-code-extensions.vscode-clangd
-
+        # shader-slang.slang-language-extension
       ];
 
       userSettings = {

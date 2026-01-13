@@ -7,7 +7,7 @@
 
   programs.zen-browser = {
     enable = true;
-    package = inputs.self.packages.${pkgs.system}.zen-with-sine;
+    package = inputs.self.packages.${stdenv.hostPlatform.system}.zen-with-sine;
     policies = let 
       mkExtensionSettings = builtins.mapAttrs (_: pluginId: {
         install_url = "https://addons.mozilla.org/firefox/downloads/latest/${pluginId}/latest.xpi";

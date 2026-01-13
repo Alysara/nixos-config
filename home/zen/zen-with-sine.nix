@@ -5,7 +5,7 @@ let
   sineDeps = import ./sine.nix { inherit pkgs; };
   fxAutoconfig = sineDeps.fxAutoconfig;
   sine = sineDeps.sine;
-  zenSrc = inputs.zen-browser.packages.${pkgs.system}.default;
+  zenSrc = inputs.zen-browser.packages.${stdenv.hostPlatform.system}.default;
 in
 pkgs.stdenv.mkDerivation {
   pname = "zen-with-sine";

@@ -12,6 +12,8 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
+    hytale-launcher.url = "github:TNAZEP/HytaleLauncherFlake";
+
     hypredge = {
       url = "github:CyrenArkade/hypredge";
       # url = "git+file:///home/cyren/dev/cpp/hypredge";
@@ -19,7 +21,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, zen-browser, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, zen-browser, hytale-launcher, ... }:
     let
       inherit (self) outputs;
       lib = nixpkgs.lib;

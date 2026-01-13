@@ -55,30 +55,33 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [
-    wl-clipboard
-    lshw
-    unzip
-    brightnessctl
-    jq
-    inxi
-    fastfetch
-    sqlitestudio
-    vivaldi
-    obs-studio
-    zip
-    vlc
-    kdePackages.kdenlive
+  home.packages = [
+    pkgs.wl-clipboard
+    pkgs.lshw
+    pkgs.unzip
+    pkgs.brightnessctl
+    pkgs.jq
+    pkgs.inxi
+    pkgs.fastfetch
+    pkgs.sqlitestudio
+    pkgs.vivaldi
+    pkgs.obs-studio
+    pkgs.zip
+    pkgs.vlc
+    pkgs.kdePackages.kdenlive
     # clion
     # zoom-us
+    # renderdoc
 
-    libreoffice-qt
-    hunspell
-    hunspellDicts.en_US
-    prismlauncher
+    pkgs.libreoffice-qt
+    pkgs.hunspell
+    pkgs.hunspellDicts.en_US
+    pkgs.prismlauncher
 
-    gimp
-    obsidian
+    pkgs.gimp
+    pkgs.obsidian
+
+    inputs.hytale-launcher.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # inputs.zen-browser.packages."{$system}".default
 
@@ -152,6 +155,7 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
+    # GDK_BACKEND = "wayland";
   };
 
   #programs.bash.enable = true; 

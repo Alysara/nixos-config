@@ -3,7 +3,7 @@
 {
   wayland.windowManager.hyprland = {
     plugins = [
-      inputs.hypredge.packages.${pkgs.system}.hypredge
+      inputs.hypredge.packages.${stdenv.hostPlatform.system}.hypredge
     ];
     
     settings = {

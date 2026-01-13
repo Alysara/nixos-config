@@ -103,8 +103,8 @@ in {
       decoration = {
         rounding = 10;
         rounding_power = 2;
-        active_opacity = 0.8;
-        inactive_opacity = 0.7;
+        active_opacity = 1;
+        inactive_opacity = 0.8;
         fullscreen_opacity = 1;
         dim_modal = true;
         dim_inactive = true;
