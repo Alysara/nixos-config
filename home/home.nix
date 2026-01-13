@@ -18,6 +18,7 @@
     ./starship.nix
     ./yazi.nix
     ./git.nix
+    # ./hytale.nix
   ];
 
   catppuccin = {
@@ -81,7 +82,9 @@
     pkgs.gimp
     pkgs.obsidian
 
-    inputs.hytale-launcher.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # inputs.hytale-launcher.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # self.packages.${pkgs.stdenv.hostPlatform.system}.hytale-launcher.default
+    (pkgs.callPackage ./hytale.nix {})
 
     # inputs.zen-browser.packages."{$system}".default
 
