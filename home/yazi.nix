@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+  home.packages = with pkgs; [
+    xdg-desktop-portal-termfilechooser
+  ];
+
   programs.yazi = {
     enable = true;
     settings = {
@@ -26,7 +30,10 @@
 
   catppuccin.yazi.enable = true;
 
+  # xdg.configFile."mimeapps.list".force = true;
   xdg.configFile."xdg-desktop-portal-termfilechooser/config" = {
+    force = true;
+    # enable = true;
     text = ''
       [filechooser]
       cmd=${pkgs.xdg-desktop-portal-termfilechooser}/share/xdg-desktop-portal-termfilechooser/yazi-wrapper.sh
@@ -34,6 +41,6 @@
       open_mode=last
       save_mode=last
     '';
-    recursive = true;
+    # recursive = true;
   };
 }

@@ -56,35 +56,35 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    pkgs.wl-clipboard
-    pkgs.lshw
-    pkgs.unzip
-    pkgs.brightnessctl
-    pkgs.jq
-    pkgs.inxi
-    pkgs.fastfetch
-    pkgs.sqlitestudio
-    pkgs.vivaldi
-    pkgs.obs-studio
-    pkgs.zip
-    pkgs.vlc
-    pkgs.kdePackages.kdenlive
+  home.packages = with pkgs; [
+    wl-clipboard
+    lshw
+    unzip
+    brightnessctl
+    jq
+    inxi
+    fastfetch
+    sqlitestudio
+    vivaldi
+    obs-studio
+    zip
+    vlc
+    kdePackages.kdenlive
     # clion
     # zoom-us
     # renderdoc
 
-    pkgs.libreoffice-qt
-    pkgs.hunspell
-    pkgs.hunspellDicts.en_US
-    pkgs.prismlauncher
+    libreoffice-qt
+    hunspell
+    hunspellDicts.en_US
+    prismlauncher
 
-    pkgs.gimp
-    pkgs.obsidian
+    gimp
+    obsidian
 
-    # inputs.hytale-launcher.packages.${pkgs.stdenv.hostPlatform.system}.default
-    # self.packages.${pkgs.stdenv.hostPlatform.system}.hytale-launcher.default
-    (pkgs.callPackage ./hytale.nix {})
+    # inputs.hytale-launcher.packages.${stdenv.hostPlatform.system}.default
+    # self.packages.${stdenv.hostPlatform.system}.hytale-launcher.default
+    (callPackage ./hytale.nix {})
 
     # inputs.zen-browser.packages."{$system}".default
 
@@ -92,19 +92,19 @@
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+    # (nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
+    # (writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-    (pkgs.writeShellScriptBin "fastcommit" (builtins.readFile ../scripts/fastcommit.sh))
-    # (pkgs.writeShellScriptBin "buildnix" (builtins.readFile ../scripts/buildnix.sh))
-    # (pkgs.writeShellScriptBin "buildhome" (builtins.readFile ../scripts/buildhome.sh))
-    (pkgs.writeShellScriptBin "add-extension" (builtins.readFile ../scripts/add-extension.sh))
+    (writeShellScriptBin "fastcommit" (builtins.readFile ../scripts/fastcommit.sh))
+    # (writeShellScriptBin "buildnix" (builtins.readFile ../scripts/buildnix.sh))
+    # (writeShellScriptBin "buildhome" (builtins.readFile ../scripts/buildhome.sh))
+    (writeShellScriptBin "add-extension" (builtins.readFile ../scripts/add-extension.sh))
   ];
 
   programs.btop = {

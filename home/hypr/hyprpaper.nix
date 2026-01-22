@@ -1,6 +1,6 @@
 { lib, ... }:
 let
-  wallpaper = toString ../../images/ruin-campfire.png;
+  wallpaper = toString ../../images/sprouting-flowers.jpg;
 in {
   wayland.windowManager.hyprland.settings = {
     exec-once = [

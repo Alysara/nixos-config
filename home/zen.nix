@@ -1,39 +1,42 @@
-{ inputs, config, system, ... }:
+{ inputs, config, system, pkgs, ... }:
 
 {
   imports = [
-    inputs.zen-browser.homeModules.default
+    inputs.zen-browser.homeModules.beta
   ];
 
+  xdg.configFile."mimeapps.list".force = true;
   xdg.mimeApps = let
-  value = let
-    zen-browser = inputs.zen-browser.packages.${system}.beta; # or twilight
-  in
-    zen-browser.meta.desktopFileName;
+    value = let
+      zen-browser = inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.beta; # or twilight
+    in
+      zen-browser.meta.desktopFileName;
 
-  associations = builtins.listToAttrs (map (name: {
-      inherit name value;
-    }) [
-      "application/x-extension-shtml"
-      "application/x-extension-xhtml"
-      "application/x-extension-html"
-      "application/x-extension-xht"
-      "application/x-extension-htm"
-      "x-scheme-handler/unknown"
-      "x-scheme-handler/mailto"
-      "x-scheme-handler/chrome"
-      "x-scheme-handler/about"
-      "x-scheme-handler/https"
-      "x-scheme-handler/http"
-      "application/xhtml+xml"
-      "application/json"
-      "text/plain"
-      "text/html"
-    ]);
+    associations = builtins.listToAttrs (map (name: {
+        inherit name value;
+      }) [
+        "application/x-extension-shtml"
+        "application/x-extension-xhtml"
+        "application/x-extension-html"
+        "application/x-extension-xht"
+        "application/x-extension-htm"
+        "x-scheme-handler/unknown"
+        "x-scheme-handler/mailto"
+        "x-scheme-handler/chrome"
+        "x-scheme-handler/about"
+        "x-scheme-handler/https"
+        "x-scheme-handler/http"
+        "application/xhtml+xml"
+        "application/json"
+        "text/plain"
+        "text/html"
+      ]);
   in {
+    enable = true;
     associations.added = associations;
     defaultApplications = associations;
   };
+  # home.sessionVariables.DEFAULT_BROWSER = "${inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/zen";
 
   programs.zen-browser = {
     enable = true;
