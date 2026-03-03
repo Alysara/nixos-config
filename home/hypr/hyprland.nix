@@ -182,7 +182,7 @@ in {
       bind = [
         "$mainMod, E, exec, kitty"
         "$mainMod Shift, F, exec, firefox"
-        "$mainMod, Z, exec, zen"
+        "$mainMod, Z, exec, zen-beta"
         "$mainMod, C, exec, code"
         "$mainMod, R, exec, kitty fish -C y"
         "$mainMod, B, exec, kitty btop"

@@ -6,6 +6,18 @@
   ];
 
   xdg.configFile."mimeapps.list".force = true;
+  xdg.configFile."xdg-desktop-portal-termfilechooser/config" = {
+    force = true;
+    # enable = true;
+    text = ''
+      [filechooser]
+      cmd=${pkgs.xdg-desktop-portal-termfilechooser}/share/xdg-desktop-portal-termfilechooser/yazi-wrapper.sh
+      default_dir=$HOME
+      open_mode=last
+      save_mode=last
+    '';
+    recursive = true;
+  };
   xdg.mimeApps = let
     value = let
       zen-browser = inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.beta; # or twilight
@@ -40,6 +52,7 @@
 
   programs.zen-browser = {
     enable = true;
+    # sine.enable = true;
     policies = let 
       mkExtensionSettings = builtins.mapAttrs (_: pluginId: {
         install_url = "https://addons.mozilla.org/firefox/downloads/latest/${pluginId}/latest.xpi";
@@ -198,6 +211,8 @@
         # Get rid of annoying swipe gestures that too often mess up my page.
         "browser.gesture.swipe.left" = "";
         "browser.gesture.swipe.right" = "";
+
+        "browser.sessionstore.restore_on_demand" = false;
       };
     };
 
@@ -208,7 +223,33 @@
         "zen.theme.gradient.show-custom-colors" = true; # See exact colors; more granular than zen's color wheel thing
         "zen.urlbar.behavior" = "float";
         "zen.tabs.show-newtab-vertical" = false; # Removes the new tab button, if you don't use ctrl + T, you probably don't want this.
+
+        # Disable session storing.
+        "zen.session-store.backup-file" = false;
+        "zen.session-store.log" = false;
+        "zen.session-store.restore-unsynced-windows" = false;
       };
+
+      keyboardShortcuts = [
+        # Change compact mode toggle to Ctrl+Alt+C
+        {
+          id = "zen-compact-mode-toggle";
+          key = "c";
+          modifiers = {
+            control = true;
+            alt = true;
+          };
+        }
+        
+        # Disable the quit shortcut to prevent accidental closes
+        {
+          id = "key_quitApplication";
+          disabled = true;
+        }
+      ];
+      # Fails activation on schema changes to detect potential regressions
+      # Find this in about:config or prefs.js of your profile
+      keyboardShortcutsVersion = 14;
 
       containersForce = true;
 

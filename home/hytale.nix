@@ -18,11 +18,11 @@ let
     name = "hytale-launcher";
     
     targetPkgs = pkgs: runtimeDeps ++ (with pkgs; [
-      xorg.libX11
-      xorg.libXcursor
-      xorg.libXrandr
-      xorg.libXi
-      xorg.libxcb
+      libX11
+      libXcursor
+      libXrandr
+      libXi
+      libxcb
       libxkbcommon
       vulkan-loader
       alsa-lib

@@ -41,6 +41,6 @@
       open_mode=last
       save_mode=last
     '';
-    # recursive = true;
+    recursive = true;
   };
 }

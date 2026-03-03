@@ -16,6 +16,12 @@
         # ms-vscode.cpptools-themes
         # llvm-vs-code-extensions.vscode-clangd
         # shader-slang.slang-language-extension
+
+        vadimcn.vscode-lldb
+        usernamehw.errorlens
+        tamasfe.even-better-toml
+        rust-lang.rust-analyzer
+        fill-labs.dependi
       ];
 
       userSettings = {
