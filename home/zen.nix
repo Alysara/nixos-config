@@ -228,6 +228,7 @@
         "zen.session-store.backup-file" = false;
         "zen.session-store.log" = false;
         "zen.session-store.restore-unsynced-windows" = false;
+        "zen.window-sync.enabled" = false;
       };
 
       keyboardShortcuts = [
