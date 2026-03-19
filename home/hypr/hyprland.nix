@@ -194,7 +194,7 @@ in {
         "$mainMod, Escape, togglefloating,"
         "$mainMod, V, exec, rofi -modi clipboard:${pkgs.cliphist}/bin/cliphist-rofi-img  -show clipboard -show-icons"
         "$mainMod, P, pseudo,"
-        "$mainMod, J, togglesplit,"
+        "$mainMod, J, layoutmsg, togglesplit,"
 
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
