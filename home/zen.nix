@@ -18,12 +18,9 @@
     '';
     recursive = true;
   };
-  xdg.mimeApps = let
-    value = let
-      zen-browser = inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.beta; # or twilight
-    in
-      zen-browser.meta.desktopFileName;
 
+    xdg.mimeApps = let
+    value = "zen-beta.desktop";
     associations = builtins.listToAttrs (map (name: {
         inherit name value;
       }) [
@@ -77,6 +74,7 @@
       SkipTermsOfUse = true;
       SearchEngines.Default = "DuckDuckGo";
       HttpsOnlyMode = "force_enabled";
+      StartPage = "none";
 
       DNSOverHTTPS = {
         Enabled = true;
@@ -213,6 +211,10 @@
         "browser.gesture.swipe.right" = "";
 
         "browser.sessionstore.restore_on_demand" = false;
+        "browser.sessionstore.resume_from_crash" = false;
+        "browser.sessionstore.resume_session_once" = false;
+        "browser.sessionstore.max_resumed_crashes" = 0; # change to 0 TODO
+        "browser.startup.page" = 0; # No restoring sessions.
       };
     };
 
@@ -250,7 +252,7 @@
       ];
       # Fails activation on schema changes to detect potential regressions
       # Find this in about:config or prefs.js of your profile
-      keyboardShortcutsVersion = 14;
+      keyboardShortcutsVersion = 16;
 
       containersForce = true;
 
