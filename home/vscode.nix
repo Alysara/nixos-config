@@ -22,6 +22,8 @@
         tamasfe.even-better-toml
         rust-lang.rust-analyzer
         fill-labs.dependi
+        gruntfuggly.todo-tree
+
       ];
 
       userSettings = {
