@@ -4,7 +4,7 @@
     sessionPackages = [
       inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland
     ];
-    preStart = "printf '\\e]P0181825\\e]P71e1e2e\\e]P811111b\\e]Pfb4befe'";
+    generic.preStart = "printf '\\e]P0181825\\e]P71e1e2e\\e]P811111b\\e]Pfb4befe'";
     ly = {
       enable = true;
       settings = {
