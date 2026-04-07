@@ -68,7 +68,7 @@ in {
         "[workspace 1] vesktop"
         "[workspace 2] zen"
         "nm-applet"
-        "protonvpn-gui"
+        "proton-vpn"
         "wl-paste --watch cliphist store"
       ];
 
@@ -194,7 +194,7 @@ in {
         "$mainMod, Escape, togglefloating,"
         "$mainMod, V, exec, rofi -modi clipboard:${pkgs.cliphist}/bin/cliphist-rofi-img  -show clipboard -show-icons"
         "$mainMod, P, pseudo,"
-        "$mainMod, J, layoutmsg, togglesplit,"
+        # "$mainMod, J, layoutmsg, togglesplit,"
 
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"

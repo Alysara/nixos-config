@@ -110,7 +110,7 @@
     wget
     networkmanagerapplet
     wireguard-tools
-    protonvpn-gui
+    proton-vpn
     clamav
     intel-gpu-tools
     htop
