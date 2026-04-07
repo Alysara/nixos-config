@@ -231,6 +231,9 @@
         "zen.session-store.log" = false;
         "zen.session-store.restore-unsynced-windows" = false;
         "zen.window-sync.enabled" = false;
+        "zen.ctrlTab.show-pending-tabs" = true;
+        "zen.widget.linux.transparency" = true;
+        "zen.workspaces.force-container-workspace" = true;
       };
 
       keyboardShortcuts = [
@@ -254,8 +257,19 @@
       # Find this in about:config or prefs.js of your profile
       keyboardShortcutsVersion = 16;
 
-      containersForce = true;
+      mods = [
+        "642854b5-88b4-4c40-b256-e035532109df" # Transparent Zen
+        "a5f6a231-e3c8-4ce8-8a8e-3e93efd6adec" # Cleaned URL bar
+        "2317fd93-c3ed-4f37-b55a-304c1816819e" # Audio Indicator Enhanced
+        "79dde383-4fe7-404a-a8e6-9be440022542" # Tidy Popup
+        "e122b5d9-d385-4bf8-9971-e137809097d0" # No Top Sites
+        "3ff55ba7-4690-4f74-96a8-9e4416685e4e" # Colored container tab
+        "f4866f39-cfd6-4498-ab92-54213b8279dc" # Animations Plus
+        "4c2bec61-7f6c-4e5c-bdc6-c9ad1aba1827" # Vertical Split Tab Groups
+        "6f11c932-b992-433e-8c80-56a613cc511e" # Left close button
+      ];
 
+      containersForce = true;
       containers = {
         Personal = {
           color = "purple";
@@ -286,8 +300,8 @@
           theme = {
             type = "gradient";
             colors = [
-              { red = 116; green = 0; blue = 255; }
-              { red = 0; green = 175; blue = 255; }
+              { red = 180; green = 120; blue = 255; }   # lighter purple
+              { red = 120; green = 210; blue = 255; }   # lighter blue
             ];
           };
         };
