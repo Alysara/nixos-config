@@ -255,7 +255,7 @@
       ];
       # Fails activation on schema changes to detect potential regressions
       # Find this in about:config or prefs.js of your profile
-      keyboardShortcutsVersion = 16;
+      # keyboardShortcutsVersion = 16;
 
       mods = [
         "642854b5-88b4-4c40-b256-e035532109df" # Transparent Zen
@@ -300,8 +300,8 @@
           theme = {
             type = "gradient";
             colors = [
-              { red = 180; green = 120; blue = 255; }   # lighter purple
-              { red = 120; green = 210; blue = 255; }   # lighter blue
+              { red = 180; green = 120; blue = 255; }
+              { red = 120; green = 210; blue = 255; }
             ];
           };
         };

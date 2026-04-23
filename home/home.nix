@@ -42,6 +42,12 @@
     };
   };
 
+  programs.zoxide = {
+    enable = true;
+    options = [ "--cmd cd" ];
+  };
+
+
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -80,6 +86,7 @@
     prismlauncher
     nh
     element-desktop
+    geekbench
     # cinny-desktop
 
     gimp
