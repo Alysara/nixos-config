@@ -115,7 +115,6 @@
     intel-gpu-tools
     htop
     icu
-    sstp
   ];
 
   # services.clamav.daemon.enable = true;
@@ -160,53 +159,6 @@
       inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland
     ];
   }; 
-
-  # environment.sessionVariables = {
-  #   NIXOS_OZ_ONE_WL = "1";
-  #   http_proxy = "http://192.168.49.1:8282";
-  #   https_proxy = "http://192.168.49.1:8282";
-  #   HTTP_PROXY = "http://192.168.49.1:8282";
-  #   HTTPS_PROXY = "http://192.168.49.1:8282";
-  #   no_proxy = "localhost,127.0.0.1";
-  #   NO_PROXY = "localhost,127.0.0.1";
-  # };
-
-  # -------------------------------------------
-  # ---------------- START OF PROXY TUNNEL ----
-  # -------------------------------------------
-
-    systemd.services.netshare-sstp = {
-    description = "NetShare SSTP VPN";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network.target" ];
-
-    serviceConfig = {
-      Type = "simple";
-      Restart = "always";
-
-      ExecStart = ''
-        ${pkgs.sstp}/bin/sstpc \
-          --log-level 4 \
-          --cert-warn \
-          --save-server-route \
-          --user def \
-          --password 0000 \
-          192.168.49.1 \
-          require-mschap-v2 \
-          noauth \
-          defaultroute \
-          usepeerdns
-      '';
-    };
-  };
-
-  security.pki.certificates = [
-    (builtins.readFile ./netshare.pem)
-  ];
-
-  # -------------------------------------------
-  # ---------------- END OF PROXY TUNNEL ------
-  # -------------------------------------------
 
   hardware.enableRedistributableFirmware = true;
 

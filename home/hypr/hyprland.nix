@@ -136,7 +136,7 @@ in {
           range = 4;
           render_power = 3;
           sharp = false;
-          ignore_window = true;
+          # ignore_window = true;
           color = "0xee1a1a1a";
           # color_inactive = unset # type color
           # offset = "[0, 0]"; needs a vec2:stof, figure out how to make ?
