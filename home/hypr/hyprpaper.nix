@@ -3,9 +3,9 @@ let
   wallpaper = toString ../../images/sprouting-flowers.jpg;
 in {
   wayland.windowManager.hyprland.settings = {
-    exec-once = [
-      "hyprpaper"
-    ];
+    #exec-once = [
+    #  "hyprpaper"
+    #];
   };
   
   services.hyprpaper = {

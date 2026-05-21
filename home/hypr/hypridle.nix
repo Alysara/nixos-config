@@ -2,9 +2,9 @@
 
 {
   wayland.windowManager.hyprland.settings = {
-    exec-once = [
-      "systemctl --user start hypridle"
-    ];
+   # exec-once = [
+   #   "systemctl --user start hypridle"
+   # ];
   };
   
 
