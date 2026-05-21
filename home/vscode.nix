@@ -23,13 +23,13 @@
         rust-lang.rust-analyzer
         fill-labs.dependi
         gruntfuggly.todo-tree
-
+        enkia.tokyo-night
       ];
 
       userSettings = {
         "explorer.confirmDragAndDrop" = false;
         "files.autoSave" = "afterDelay";
-        "workbench.colorTheme" = "Catppuccin Mocha";
+        "workbench.colorTheme" = "Tokyo Night";
         "explorer.confirmDelete" = false;
         "editor.fontFamily" = "'JetBrainsMono Nerd Font', 'Droid Sans Mono', 'monospace'";
         "editor.fontLigatures" = true;
@@ -37,6 +37,12 @@
 
         "git.confirmSync" = false;
         "workbench.editor.empty.hint" = "hidden";
+
+        "workbench.colorCustomizations" = {
+          "editorInlayHint.background" = "#00000000";
+          "editorInlayHint.parameterBackground" = "#00000000";
+          "editorInlayHint.typeBackground" = "#00000000";
+        };
         
         # "C_Cpp.default.cppStandard" = "c++23";
         # "C_Cpp.default.intelliSenseMode" = "linux-clang-x64";

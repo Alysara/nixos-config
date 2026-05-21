@@ -1,18 +1,18 @@
 { lib, config, ... }:
 
 {
-  wayland.windowManager.hyprland.settings = {
+#  wayland.windowManager.hyprland.settings = {
     # if using autologin
     # exec-once = [
     #     "hyprlock --immediate --immediate-render --no-fade-in"
     # ];
-    bind = [
-      "$mainMod, L, exec, hyprlock"
-    ];
-    bindl = [
-      ",switch:on:Lid Switch, exec, pidof hyprlock || hyprlock"
-    ];
-  };
+#    bind = [
+#      "$mainMod, L, exec, hyprlock"
+#    ];
+#    bindl = [
+#      ",switch:on:Lid Switch, exec, pidof hyprlock || hyprlock"
+#    ];
+#  };
 
   programs.hyprlock = {
     enable = true;

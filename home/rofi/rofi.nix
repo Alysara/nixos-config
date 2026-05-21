@@ -43,16 +43,16 @@ in {
   catppuccin.rofi.enable = true;
 
 
-  wayland.windowManager.hyprland.settings = {
-    windowrule = [
-      "stay_focused 1, match:class ^Rofi$"
-      "rounding 0, match:class ^Rofi$"
-    ];
-
-    bindr = [
-      "$mainMod, Super_L, exec, rofi -show drun -pid /tmp/wofi-pid || pkill rofi"
-    ];
-  };
+#  wayland.windowManager.hyprland.settings = {
+#    windowrule = [
+#      "stay_focused 1, match:class ^Rofi$"
+#      "rounding 0, match:class ^Rofi$"
+#    ];
+#
+#    bindr = [
+#      "$mainMod, Super_L, exec, rofi -show drun -pid /tmp/wofi-pid || pkill rofi"
+#    ];
+#  };
 
   programs.yazi.settings = {
     opener = {

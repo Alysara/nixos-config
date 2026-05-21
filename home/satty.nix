@@ -24,18 +24,18 @@ in {
     };
   };
 
-  wayland.windowManager.hyprland.settings = {
-    bind = [
-      "$mainMod Shift, S, exec, ${takeScreenshot}"
-      ", Print, exec, ${takeScreenshot}" # printscreen
-    ];
-    windowrule = [
-      "no_anim 1, match:class ^(com.gabm.satty)$"
+ # wayland.windowManager.hyprland.settings = {
+ #   bind = [
+ #     "SUPER + Shift, S, exec, ${takeScreenshot}"
+ #     ", Print, exec, ${takeScreenshot}" # printscreen
+ #   ];
+ #   windowrule = [
+ #     "no_anim 1, match:class ^(com.gabm.satty)$"
       # "float, match:class ^(com.gabm.satty)$"
       # "move 0 0, match:class ^(com.gabm.satty)$"
       # "pin, match:class ^(com.gabm.satty)$"
       # "size 100% 100%, match:class ^(com.gabm.satty)$"
       # "noinitialfocus, match:class ^(com.gabm.satty)$"
-    ];
-  };
+ #   ];
+ # };
 }

@@ -153,6 +153,7 @@
   hardware.bluetooth.enable = true;
   
   services.blueman.enable = true;
+  services.blueman.withApplet = false;
   
   services.displayManager = {
     sessionPackages = [

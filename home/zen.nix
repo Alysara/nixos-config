@@ -78,7 +78,7 @@
 
       DNSOverHTTPS = {
         Enabled = true;
-        ProviderURL = "https://doh.libredns.gr/noads";
+        ProviderURL = "https://dns.quad9.net/dns-query";
         Fallback = false;
         Locked = true;
       };
