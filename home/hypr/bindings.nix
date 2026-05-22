@@ -1,24 +1,58 @@
 { pkgs, lib, ... }:
 
 let
-    inherit ( import ./lua_utils.nix { inherit lib; })
-        luaify lambda call bind_flags bind bind_exec smw with_flags on_startup;
+  stepBrightness = pkgs.writeShellScriptBin "step-brightness" ''
+    #!/usr/bin/env bash
 
-    takeScreenshot = pkgs.writeShellScript "takeScreenshot" ''
-      folderName="$HOME/Pictures/Screenshots/$(date +%Y)-$(date +%m)"
-      fileName="$(date +"%Y-%m-%d_%H:%M:%S").png"
-      fullPath="$folderName/$fileName"
+    steps=(0 1 2 3 5 10 15 25 40 60 80 100)
 
-      mkdir -p "$folderName"
-      ${pkgs.grim}/bin/grim -t ppm - | ${pkgs.satty}/bin/satty --filename - --output-filename "$fullPath"
-    '';
+    current=$(brightnessctl -d intel_backlight g)
+    max=$(brightnessctl -d intel_backlight m)
+    cur_percent=$((100 * current / max))
+
+    if [[ $1 == "up" ]]; then
+        for s in "''${steps[@]}"; do
+            if (( s > cur_percent )); then
+                brightnessctl -d intel_backlight s "''${s}%"
+                exit 0
+            fi
+        done
+    elif [[ $1 == "down" ]]; then
+        prev=0
+        for s in "''${steps[@]}"; do
+            if (( s >= cur_percent )); then
+                brightnessctl -d intel_backlight s "''${prev}%"
+                exit 0
+            fi
+            prev=$s
+        done
+    fi
+  '';
+
+  inherit ( import ./lua_utils.nix { inherit lib; })
+      luaify lambda call bind_flags bind bind_exec smw with_flags on_startup;
+
+  takeScreenshot = pkgs.writeShellScript "takeScreenshot" ''
+    folderName="$HOME/Pictures/Screenshots/$(date +%Y)-$(date +%m)"
+    fileName="$(date +"%Y-%m-%d_%H:%M:%S").png"
+    fullPath="$folderName/$fileName"
+
+    mkdir -p "$folderName"
+    ${pkgs.grim}/bin/grim -t ppm - | ${pkgs.satty}/bin/satty --filename - --output-filename "$fullPath"
+  '';
 in {
+    home.packages = [
+      pkgs.brightnessctl
+      stepBrightness
+    ];
+
     wayland.windowManager.hyprland.settings = {
         bind = map call (builtins.concatLists [[
           /* Software */
           (bind_exec "SUPER + Z" "zen-beta")
           (bind_exec "SUPER + T" "kitty")
           (bind_exec "SUPER + C" "code")
+          (bind_exec "SUPER + B" "btop")
           (bind_exec "SUPER + SHIFT + S" " ${takeScreenshot}") /* Screenshot */
           (bind_exec "Print" " ${takeScreenshot}") /* Screenshot */
           (bind_exec "SUPER + SUPER_L" "rofi -show drun -pid /tmp/wofi-pid || pkill rofi")
@@ -75,8 +109,8 @@ in {
           (bind_exec "XF86AudioLowerVolume"  "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")
           (bind_exec "XF86AudioMute"         "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
           (bind_exec "XF86AudioMicMute"      "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle")
-          (bind_exec "XF86MonBrightnessUp"   "bash ~/.dotfiles/scripts/step-brightness.sh up")
-          (bind_exec "XF86MonBrightnessDown" "bash ~/.dotfiles/scripts/step-brightness.sh down")
+          (bind_exec "XF86MonBrightnessUp"   "step-brightness up")
+          (bind_exec "XF86MonBrightnessDown" "step-brightness down")
       ])
 
       # workspaces

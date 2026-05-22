@@ -26,7 +26,7 @@ in {
     
     configType = "lua";
     settings = {
-      monitor = [ {output = "DP-1"; mode = "preferred"; position = "auto-left"; scale = 2.0; } ];
+      monitor = [ {output = "eDP-1"; mode = "preferred"; position = "auto-left"; scale = 1.25; } ];
 
       # workspace = [
       #  "1, persistent:true"
@@ -126,102 +126,40 @@ in {
           kb_layout = "us";
           sensitivity = 0;
 	      };
+
+        curve = [
+          (call ["easeOutQuint"   { type = "bezier"; points = [[0.23 1]    [0.32 1]]; }])
+          (call ["easeInOutCubic" { type = "bezier"; points = [[0.65 0.05] [0.36 1]]; }])
+          (call ["linear"         { type = "bezier"; points = [[0    0]    [1    1]]; }])
+          (call ["almostLinear"   { type = "bezier"; points = [[0.5  0.5]  [0.75 1]]; }])
+          (call ["quick"          { type = "bezier"; points = [[0.15 0]    [0.1  1]]; }])
+          (call ["easy"           { type = "spring"; mass = 1; stiffness = 71.2633; dampening = 15.8273644; }])
+        ];
+
+        animation = [
+          { leaf = "global";        enabled = true;  speed = 10;   bezier = "default"; }
+          { leaf = "border";        enabled = true;  speed = 5.39; bezier = "easeOutQuint"; }
+          { leaf = "windows";       enabled = true;  speed = 4.79; spring = "easy"; }
+          { leaf = "windowsIn";     enabled = true;  speed = 4.1;  spring = "easy";           style = "popin 87%"; }
+          { leaf = "windowsOut";    enabled = true;  speed = 1.49; bezier = "linear";         style = "popin 87%"; }
+          { leaf = "fadeIn";        enabled = true;  speed = 1.73; bezier = "almostLinear"; }
+          { leaf = "fadeOut";       enabled = true;  speed = 1.46; bezier = "almostLinear"; }
+          { leaf = "fade";          enabled = true;  speed = 3.03; bezier = "quick"; }
+          { leaf = "layers";        enabled = true;  speed = 3.81; bezier = "easeOutQuint"; }
+          { leaf = "layersIn";      enabled = true;  speed = 4;    bezier = "easeOutQuint";   style = "fade"; }
+          { leaf = "layersOut";     enabled = true;  speed = 1.5;  bezier = "linear";         style = "fade"; }
+          { leaf = "fadeLayersIn";  enabled = true;  speed = 1.79; bezier = "almostLinear"; }
+          { leaf = "fadeLayersOut"; enabled = true;  speed = 1.39; bezier = "almostLinear"; }
+          { leaf = "workspaces";    enabled = true;  speed = 3;    bezier = "easeInOutCubic"; style = "slide"; }
+          { leaf = "workspacesIn";  enabled = true;  speed = 3;    bezier = "easeInOutCubic"; style = "slide"; }
+          { leaf = "workspacesOut"; enabled = true;  speed = 3;    bezier = "easeInOutCubic"; style = "slide"; }
+          { leaf = "zoomFactor";    enabled = true;  speed = 7;    bezier = "quick"; }
+        ];
+
       };
-
-      #bindm = [
-      #  "SUPER, mouse:272, movewindow"
-#	      "SUPER, mouse:273, resizewindow"
-     # ];
-
-    #  bind = map call (builtins.concatLists [[
-    #  	(bind_exec "SUPER + Z" "zen-beta")
-    #   (bind_exec "SUPER + T" "kitty")
-    #   (bind_exec "SUPER + C" "code")
-    #   (bind "SUPER + F" "hl.dsp.window.fullscreen()")
-    #   (bind "SUPER + SHIFT + A" ''hl.dsp.window.move({ workspace = "e-1" })'')
-    #   (bind "SUPER + SHIFT + D" ''hl.dsp.window.move({ workspace = "e+1" })'')
-    #   (bind "SUPER + A" ''hl.dsp.focus({ workspace = "e-1" })'')
-    #   (bind "SUPER + D" ''hl.dsp.focus({ workspace = "e+1" })'')
-    #   (bind_exec "SUPER + SUPER_L" "rofi -show drun -pid /tmp/wofi-pid || pkill rofi")
-    # ]
-    
-    #   (
-    #     (builtins.concatLists (builtins.genList (i:
-    #       let ws = i + 1;
-    #       in [
-    #         (bind "SUPER + ${toString ws}" ''hl.dsp.focus({ workspace = "${toString ws}" })'')
-    #         (bind "SUPER + SHIFT + ${toString ws}" ''hl.dsp.window.move({ workspace = "${toString ws}" })'')
-    #       ]
-    #     ) 9))
-    #   )
-
-    # ]);
-
-      #binde = [
-      #  "SUPER SHIFT, left, resizeactive, 10 0"
-      #  "SUPER SHIFT, right, resizeactive, -10 0"
-      #  "SUPER SHIFT, up, resizeactive, 0 -10"
-      #  "SUPER SHIFT, down, resizeactive, 0 10"
-      #];
-
-      #bindel = [
-      #  ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
-      #  ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-      #  ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-      #  ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-      #  ",XF86MonBrightnessUp, exec, step-brightness up"
-      #  ",XF86MonBrightnessDown, exec, step-brightness down"
-      #];
-
-      #bindl = [
-      #  ",XF86AudioNext, exec, playerctl next"
-      #  ",XF86AudioPause, exec, playerctl play-pause"
-      #  ",XF86AudioPlay, exec, playerctl play-pause"
-      #  ",XF86AudioPrev, exec, playerctl previous"
-      #];
-
-      #bind = [
-      #  "SUPER, E, exec, kitty"
-      #  "SUPER Shift, F, exec, firefox"
-      #  "SUPER, Z, exec, zen-beta"
-      #  "SUPER, C, exec, code"
-      #  "SUPER, R, exec, kitty fish -C y"
-      #  "SUPER, B, exec, kitty btop"
-      #  "SUPER, T, exec, ${pkgs.hdrop}/bin/hdrop -f -p t -g 0 -h 40 -w 67 kitty --class kitty_hdrop"
-
-      #  "SUPER, Q, killactive,"
-      #  "SUPER, M, exit,"
-      #  "SUPER, F, fullscreen,"
-      #  "SUPER, Escape, togglefloating,"
-      #  "SUPER, V, exec, rofi -modi clipboard:${pkgs.cliphist}/bin/cliphist-rofi-img  -show clipboard -show-icons"
-      #  "SUPER, P, pseudo,"
-      #  # "SUPER, J, layoutmsg, togglesplit,"
-
-      #  "SUPER, left, movefocus, l"
-      #  "SUPER, right, movefocus, r"
-      #  "SUPER, up, movefocus, u"
-      #  "SUPER, down, movefocus, d"
-#
-#        "SUPER, A, workspace, e-1"
-#        "SUPER, D, workspace, e+1"
-#
-#        "SUPER Shift, A, movetoworkspace, e-1"
-#        "SUPER Shift, D, movetoworkspace, e+1"
-#
 #        "SUPER, W, togglespecialworkspace, mini"
 #        "SUPER, S, movetoworkspacesilent, special:mini"
 #        "SUPER, S, movetoworkspacesilent, +0"
-#      ]
-#      ++ (
-#        builtins.concatLists (builtins.genList (i:
-#            let ws = i + 1;
-#            in [
-#              "SUPER, ${toString ws}, workspace, ${toString ws}"
-#              "SUPER SHIFT, ${toString ws}, movetoworkspace, ${toString ws}"
-#            ]
-#          )
-#          9)
-#      );
 
     };
   };
