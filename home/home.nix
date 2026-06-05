@@ -18,6 +18,7 @@
     ./starship.nix
     ./yazi.nix
     ./git.nix
+    ./vim.nix
     # ./hytale.nix
   ];
 
@@ -91,6 +92,7 @@
 
     gimp
     obsidian
+    ripgrep
 
     # inputs.hytale-launcher.packages.${stdenv.hostPlatform.system}.default
     # self.packages.${stdenv.hostPlatform.system}.hytale-launcher.default

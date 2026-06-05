@@ -1,15 +1,19 @@
 { pkgs, ... }:
 
 {
+  home.packages = with pkgs; [
+    fira-code
+    nerd-fonts.fira-code
+  ];
   programs.kitty = {
     enable = true;
     settings = {
       confirm_os_window_close = 0;
-      # enable_audio_bell = 0;
+      font_family = "FiraCode Nerd Font";
+      font_size = 11;
+      background_opacity = 0.2;
+      background_blue = 1;
     };
-    # extraConfig = ''
-    #  map ctrl+a select_all
-    # '';
   };
 
   catppuccin.kitty.enable = true;

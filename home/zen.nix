@@ -1,4 +1,10 @@
-{ inputs, config, system, pkgs, ... }:
+{
+  inputs,
+  config,
+  system,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -19,204 +25,218 @@
     recursive = true;
   };
 
-    xdg.mimeApps = let
-    value = "zen-beta.desktop";
-    associations = builtins.listToAttrs (map (name: {
-        inherit name value;
-      }) [
-        "application/x-extension-shtml"
-        "application/x-extension-xhtml"
-        "application/x-extension-html"
-        "application/x-extension-xht"
-        "application/x-extension-htm"
-        "x-scheme-handler/unknown"
-        "x-scheme-handler/mailto"
-        "x-scheme-handler/chrome"
-        "x-scheme-handler/about"
-        "x-scheme-handler/https"
-        "x-scheme-handler/http"
-        "application/xhtml+xml"
-        "application/json"
-        "text/plain"
-        "text/html"
-      ]);
-  in {
-    enable = true;
-    associations.added = associations;
-    defaultApplications = associations;
-  };
+  xdg.mimeApps =
+    let
+      value = "zen-beta.desktop";
+      associations = builtins.listToAttrs (
+        map
+          (name: {
+            inherit name value;
+          })
+          [
+            "application/x-extension-shtml"
+            "application/x-extension-xhtml"
+            "application/x-extension-html"
+            "application/x-extension-xht"
+            "application/x-extension-htm"
+            "x-scheme-handler/unknown"
+            "x-scheme-handler/mailto"
+            "x-scheme-handler/chrome"
+            "x-scheme-handler/about"
+            "x-scheme-handler/https"
+            "x-scheme-handler/http"
+            "application/xhtml+xml"
+            "application/json"
+            "text/plain"
+            "text/html"
+          ]
+      );
+    in
+    {
+      enable = true;
+      associations.added = associations;
+      defaultApplications = associations;
+    };
   # home.sessionVariables.DEFAULT_BROWSER = "${inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/zen";
 
   programs.zen-browser = {
     enable = true;
     # sine.enable = true;
-    policies = let 
-      mkExtensionSettings = builtins.mapAttrs (_: pluginId: {
-        install_url = "https://addons.mozilla.org/firefox/downloads/latest/${pluginId}/latest.xpi";
-        installation_mode = "force_installed";
-      });
+    policies =
+      let
+        mkExtensionSettings = builtins.mapAttrs (
+          _: pluginId: {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/${pluginId}/latest.xpi";
+            installation_mode = "force_installed";
+          }
+        );
 
-      mkLockedAttrs = builtins.mapAttrs (_: value: {
-        Value = value;
-        Status = "locked";
-      });
-    in {
-      AutofillAddressEnabled = false;
-      AutofillCreditCardEnabled = false;
-      DisableAppUpdate = true;
-      DisableFeedbackCommands = true;
-      DisableFirefoxStudies = true;
-      DisablePocket = true;
-      DisableTelemetry = true;
-      DontCheckDefaultBrowser = true;
-      NoDefaultBookmarks = true;
-      OfferToSaveLogins = false;
-      SkipTermsOfUse = true;
-      SearchEngines.Default = "DuckDuckGo";
-      HttpsOnlyMode = "force_enabled";
-      StartPage = "none";
+        mkLockedAttrs = builtins.mapAttrs (
+          _: value: {
+            Value = value;
+            Status = "locked";
+          }
+        );
+      in
+      {
+        AutofillAddressEnabled = false;
+        AutofillCreditCardEnabled = false;
+        DisableAppUpdate = true;
+        DisableFeedbackCommands = true;
+        DisableFirefoxStudies = true;
+        DisablePocket = true;
+        DisableTelemetry = true;
+        DontCheckDefaultBrowser = true;
+        NoDefaultBookmarks = true;
+        OfferToSaveLogins = false;
+        SkipTermsOfUse = true;
+        SearchEngines.Default = "DuckDuckGo";
+        HttpsOnlyMode = "force_enabled";
+        StartPage = "none";
 
-      DNSOverHTTPS = {
-        Enabled = true;
-        ProviderURL = "https://dns.quad9.net/dns-query";
-        Fallback = false;
-        Locked = true;
+        DNSOverHTTPS = {
+          Enabled = true;
+          ProviderURL = "https://dns.quad9.net/dns-query";
+          Fallback = false;
+          Locked = true;
+        };
+
+        SanitizeOnShutdown = {
+          Cache = true;
+          Cookies = true;
+          FormData = true;
+          History = true;
+          Sessions = true;
+          SiteSettings = false;
+          Locked = true;
+        };
+
+        EnableTrackingProtection = {
+          Value = true;
+          Locked = true;
+          Cryptomining = true;
+          Fingerprinting = true;
+          EmailTracking = true;
+          Category = "strict";
+        };
+
+        ExtensionSettings = mkExtensionSettings {
+          "{3579f63b-d8ee-424f-bbb6-6d0ce3285e6a}" = "chameleon-ext";
+          "sponsorBlocker@ajay.app" = "sponsorblock";
+          "addon@darkreader.org" = "darkreader";
+          "uBlock0@raymondhill.net" = "ublock-origin";
+          "{d7742d87-e61d-4b78-b8a1-b469842139fa}" = "vimium-ff";
+        };
+
+        Preferences = mkLockedAttrs {
+          "browser.tabs.unloadOnLowMemory" = true;
+          "browser.low_commit_space_threshold_percent" = 100; # Make memory management aggressive; no wasteful memory usage
+          "browser.tabs.warnOnClose" = false; # Remove annoying warning
+          "browser.ctrlTab.sortByRecentlyUsed" = true; # Better ctrl + tab behavior
+
+          # Anti-fingerprinting stuff
+          "privacy.resistFingerprinting" = true;
+          "privacy.resistFingerprinting.randomization.canvas.use_siphash" = true;
+          "privacy.resistFingerprinting.randomization.daily_reset.enabled" = true;
+          "privacy.resistFingerprinting.randomization.daily_reset.private.enabled" = true;
+          "privacy.resistFingerprinting.block_mozAddonManager" = true;
+          "privacy.spoof_english" = 1;
+
+          # Turn off geolocation features
+          "geo.enabled" = false;
+          "geo.provider.use_geoclue" = false;
+
+          "browser.newtabpage.activity-stream.showSponsored" = false;
+          "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+          "browser.topsites.contile.enabled" = false;
+          "browser.topsites.contile.endpoint" = "";
+          "browser.topsites.contile.sov.enabled" = false;
+          "browser.topsites.useRemoteSetting" = false;
+          "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned" = "duckduckgo";
+          "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.searchEngines" =
+            "duckduckgo";
+          "browser.partnerlink.campaign.topsites" = "";
+          "browser.urlbar.sponsoredTopSites" = false;
+          "browser.newtabpage.activity-stream.default.sites" = "";
+          "browser.discovery.sites" = "";
+          "browser.newtabpage.activity-stream.discoverystream.spocTopsitesPlacement.enabled" = false;
+          "browser.newtabpage.pinned" = ''[{"url":"https://duckduckgo.com","label":"DuckDuckGo"}]'';
+          "browser.discovery.enabled" = false;
+
+          "layers.acceleration.disabled" = false;
+          "layers.acceleration.force-enabled" = true;
+          "gfx.webrender.all" = true;
+
+          "extensions.getAddons.showPane" = false;
+          "extensions.htmlaboutaddons.recommendations.enabled" = false;
+
+          "browser.aboutConfig.showWarning" = false; # Remove annoying warning
+          "intl.accept_languages" = "en-US, en";
+          "javascript.use_us_english_locale" = true;
+
+          # "browser.newtabpage.pinned" = false;
+          "breakpad.reportURL" = "";
+          "browser.tabs.crashReporting.sendReport" = false;
+          "browser.crashReports.unsubmittedCheck.autoSubmit2" = false;
+
+          "captivedetect.canonicalURL" = "";
+          "network.captive-portal-service.enabled" = false;
+          "network.connectivity-service.enabled" = false;
+          "network.prefetch-next" = false;
+          "network.dns.disablePrefetch" = false;
+          "network.dns.disablePrefetchFromHTTPS" = false;
+          "network.predictor.enabled" = false;
+          "network.predictor.enable-prefetch" = false;
+
+          "network.http.speculative-parallel-limit" = 0;
+          "browser.places.speculativeConnect.enabled" = false;
+
+          "security.ssl.require_safe_negotiation" = true;
+          "security.tls.enable_0rtt_data" = false;
+          "security.OCSP.enabled" = 1;
+          "security.OCSP.require" = true;
+          "security.cert_pinning.enforcement_level" = 2;
+          "security.remote_settings.crlite_filters.enabled" = true;
+          "security.pki.crlite_mode" = 2;
+          "security.ssl.treat_unsafe_negotiation_as_broken" = true;
+
+          "dom.security.https_only_mode" = true;
+          "dom.serviceWorkers.enabled" = false;
+          "dom.security.https_only_mode_send_http_background_request" = false;
+          "browser.xul.error_pages.expert_bad_cert" = true;
+          "browser.sessionstore.privacy_level" = 2;
+
+          "media.peerconnection.ice.proxy_only_if_behind_proxy" = true;
+          "media.peerconnection.ice.default_address_only" = true;
+          "dom.disable_window_move_resize" = true;
+          "browser.download.start_downloads_in_tmp_dir" = true;
+          "browser.helperApps.deleteTempFileOnExit" = true;
+          "browser.uitour.enabled" = false;
+          "devtools.debugger.remote-enabled" = false;
+          "permissions.manager.defaultsUrl" = "";
+
+          "network.IDN_show_punycode" = true;
+          "security.csp.reporting.enabled" = false;
+          "browser.download.useDownloadDir" = false;
+          "browser.download.manager.addToRecentDocs" = false;
+          "browser.download.always_ask_before_handling_new_types" = true;
+          "extensions.enabledScopes" = 5;
+          "browser.link.open_newwindow.restriction" = 0;
+
+          "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
+          "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
+
+          # Get rid of annoying swipe gestures that too often mess up my page.
+          "browser.gesture.swipe.left" = "";
+          "browser.gesture.swipe.right" = "";
+
+          "browser.sessionstore.restore_on_demand" = false;
+          "browser.sessionstore.resume_from_crash" = false;
+          "browser.sessionstore.resume_session_once" = false;
+          "browser.sessionstore.max_resumed_crashes" = 0; # change to 0 TODO
+          "browser.startup.page" = 0; # No restoring sessions.
+        };
       };
-
-      SanitizeOnShutdown = {
-        Cache = true;
-        Cookies = true;
-        FormData = true;
-        History = true;
-        Sessions = true;
-        SiteSettings = false;
-        Locked = true;
-      };
-
-      EnableTrackingProtection = {
-        Value = true;
-        Locked = true;
-        Cryptomining = true;
-        Fingerprinting = true;
-        EmailTracking = true;
-        Category = "strict";
-      };
-
-      ExtensionSettings = mkExtensionSettings {
-        "{3579f63b-d8ee-424f-bbb6-6d0ce3285e6a}" = "chameleon-ext";
-        "sponsorBlocker@ajay.app" = "sponsorblock";
-        "addon@darkreader.org" = "darkreader";
-        "uBlock0@raymondhill.net" = "ublock-origin";
-      };
-
-      Preferences = mkLockedAttrs {
-        "browser.tabs.unloadOnLowMemory" = true;
-        "browser.low_commit_space_threshold_percent" = 100; # Make memory management aggressive; no wasteful memory usage
-        "browser.tabs.warnOnClose" = false; # Remove annoying warning
-        "browser.ctrlTab.sortByRecentlyUsed" = true; # Better ctrl + tab behavior
-
-        # Anti-fingerprinting stuff
-        "privacy.resistFingerprinting" = true;
-        "privacy.resistFingerprinting.randomization.canvas.use_siphash" =	true;	
-        "privacy.resistFingerprinting.randomization.daily_reset.enabled" = true;
-        "privacy.resistFingerprinting.randomization.daily_reset.private.enabled" = true;
-        "privacy.resistFingerprinting.block_mozAddonManager" = true;
-        "privacy.spoof_english" = 1;
-
-        # Turn off geolocation features
-        "geo.enabled" = false;
-        "geo.provider.use_geoclue" = false;
-
-        "browser.newtabpage.activity-stream.showSponsored" = false;
-        "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
-        "browser.topsites.contile.enabled" = false;
-        "browser.topsites.contile.endpoint" = "";
-        "browser.topsites.contile.sov.enabled" = false;
-        "browser.topsites.useRemoteSetting" = false;
-        "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.havePinned" = "duckduckgo";
-        "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.searchEngines" = "duckduckgo";
-        "browser.partnerlink.campaign.topsites" = "";
-        "browser.urlbar.sponsoredTopSites" = false;
-        "browser.newtabpage.activity-stream.default.sites" = "";
-        "browser.discovery.sites" = "";
-        "browser.newtabpage.activity-stream.discoverystream.spocTopsitesPlacement.enabled" = false;
-        "browser.newtabpage.pinned" = ''[{"url":"https://duckduckgo.com","label":"DuckDuckGo"}]'';
-        "browser.discovery.enabled" = false;
-
-        "layers.acceleration.disabled" = false;
-        "layers.acceleration.force-enabled" = true;
-        "gfx.webrender.all" = true;
-
-        "extensions.getAddons.showPane" = false;
-        "extensions.htmlaboutaddons.recommendations.enabled" = false;
-
-        "browser.aboutConfig.showWarning" = false; # Remove annoying warning
-        "intl.accept_languages" = "en-US, en";
-        "javascript.use_us_english_locale" = true;
-
-        # "browser.newtabpage.pinned" = false;
-        "breakpad.reportURL" = "";
-        "browser.tabs.crashReporting.sendReport" = false;
-        "browser.crashReports.unsubmittedCheck.autoSubmit2" = false;
-
-        "captivedetect.canonicalURL" = "";
-        "network.captive-portal-service.enabled" = false;
-        "network.connectivity-service.enabled" = false;
-        "network.prefetch-next" = false;
-        "network.dns.disablePrefetch" = false;
-        "network.dns.disablePrefetchFromHTTPS" = false;
-        "network.predictor.enabled" = false;
-        "network.predictor.enable-prefetch" = false;
-
-        "network.http.speculative-parallel-limit" = 0;
-        "browser.places.speculativeConnect.enabled" = false;
-
-        "security.ssl.require_safe_negotiation" = true;
-        "security.tls.enable_0rtt_data" = false;
-        "security.OCSP.enabled" = 1;
-        "security.OCSP.require" = true;
-        "security.cert_pinning.enforcement_level" = 2;
-        "security.remote_settings.crlite_filters.enabled" = true;
-        "security.pki.crlite_mode" = 2;
-        "security.ssl.treat_unsafe_negotiation_as_broken" = true;
-
-        "dom.security.https_only_mode" = true;
-        "dom.serviceWorkers.enabled" = false;
-        "dom.security.https_only_mode_send_http_background_request" = false;
-        "browser.xul.error_pages.expert_bad_cert" = true;
-        "browser.sessionstore.privacy_level" = 2;
-
-        "media.peerconnection.ice.proxy_only_if_behind_proxy" = true;
-        "media.peerconnection.ice.default_address_only" = true;
-        "dom.disable_window_move_resize" = true;
-        "browser.download.start_downloads_in_tmp_dir" = true;
-        "browser.helperApps.deleteTempFileOnExit" = true;
-        "browser.uitour.enabled" = false;
-        "devtools.debugger.remote-enabled" = false;
-        "permissions.manager.defaultsUrl" = "";
-
-        "network.IDN_show_punycode" = true;
-        "security.csp.reporting.enabled" = false;
-        "browser.download.useDownloadDir" = false;
-        "browser.download.manager.addToRecentDocs" = false;
-        "browser.download.always_ask_before_handling_new_types" = true;
-        "extensions.enabledScopes" = 5;
-        "browser.link.open_newwindow.restriction" = 0;
-
-        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
-        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
-
-        # Get rid of annoying swipe gestures that too often mess up my page.
-        "browser.gesture.swipe.left" = "";
-        "browser.gesture.swipe.right" = "";
-
-        "browser.sessionstore.restore_on_demand" = false;
-        "browser.sessionstore.resume_from_crash" = false;
-        "browser.sessionstore.resume_session_once" = false;
-        "browser.sessionstore.max_resumed_crashes" = 0; # change to 0 TODO
-        "browser.startup.page" = 0; # No restoring sessions.
-      };
-    };
 
     profiles."personal-profile" = {
       settings = {
@@ -246,7 +266,7 @@
             alt = true;
           };
         }
-        
+
         # Disable the quit shortcut to prevent accidental closes
         {
           id = "key_quitApplication";
@@ -288,50 +308,77 @@
         };
       };
       spacesForce = true;
-      spaces = let
-        containers = config.programs.zen-browser.profiles."personal-profile".containers;
-      in {
-        "Personal" = {
-          id = "c6de089c-410d-4206-961d-ab11f988d40a";
-          position = 1000;
-          container = containers."Personal".id;
-          icon = "🫆";
-          # spacesForce = true;
-          theme = {
-            type = "gradient";
-            colors = [
-              { red = 180; green = 120; blue = 255; }
-              { red = 120; green = 210; blue = 255; }
-            ];
+      spaces =
+        let
+          containers = config.programs.zen-browser.profiles."personal-profile".containers;
+        in
+        {
+          "Personal" = {
+            id = "c6de089c-410d-4206-961d-ab11f988d40a";
+            position = 1000;
+            container = containers."Personal".id;
+            icon = "🫆";
+            # spacesForce = true;
+            theme = {
+              type = "gradient";
+              colors = [
+                {
+                  red = 180;
+                  green = 120;
+                  blue = 255;
+                }
+                {
+                  red = 120;
+                  green = 210;
+                  blue = 255;
+                }
+              ];
+            };
+          };
+          "Music" = {
+            id = "cdd10fab-4fc5-494b-9041-325e5759195b";
+            container = containers."Music".id;
+            icon = "🎵";
+            position = 2000;
+            theme = {
+              type = "gradient";
+              colors = [
+                {
+                  red = 255;
+                  green = 0;
+                  blue = 0;
+                }
+                {
+                  red = 252;
+                  green = 113;
+                  blue = 100;
+                }
+              ];
+            };
+          };
+          "School" = {
+            id = "78aabdad-8aae-4fe0-8ff0-2a0c6c4ccc24";
+            icon = "🎓";
+            container = containers."School".id;
+            position = 3000;
+            theme = {
+              type = "gradient";
+              colors = [
+                {
+                  red = 73;
+                  green = 58;
+                  blue = 0;
+                }
+                {
+                  red = 84;
+                  green = 76;
+                  blue = 47;
+                }
+              ];
+            };
           };
         };
-        "Music" = {
-          id = "cdd10fab-4fc5-494b-9041-325e5759195b";
-          container = containers."Music".id;
-          icon = "🎵";
-          position = 2000;
-          theme = {
-            type = "gradient";
-            colors = [
-              { red = 255; green = 0; blue = 0; }
-              { red = 252; green = 113; blue = 100; }
-            ];
-          };
-        };
-        "School" = {
-          id = "78aabdad-8aae-4fe0-8ff0-2a0c6c4ccc24";
-          icon = "🎓";
-          container = containers."School".id;
-          position = 3000;
-          theme = {
-            type = "gradient";
-            colors = [
-              { red = 73; green = 58; blue = 0; }
-              { red = 84; green = 76; blue = 47; }
-            ];
-          };
-        };
-      };
     };
   };
 }
+

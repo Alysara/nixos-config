@@ -2,11 +2,11 @@
 
 let
   inherit (config.lib.formats.rasi) mkLiteral;
-in {
+in
+{
 
   # xdg.configFile."rofi/colors.rasi".source = ./colors.rasi;
-	# xdg.configFile."rofi/style.rasi".source = ./style.rasi;
-
+  # xdg.configFile."rofi/style.rasi".source = ./style.rasi;
 
   programs.rofi = {
     enable = true;
@@ -27,7 +27,7 @@ in {
 
       window = {
         width = mkLiteral "20em";
-        border-radius = mkLiteral "20";
+        border-radius = mkLiteral "0";
       };
 
       entry.placeholder-color = mkLiteral "@placeholder";
@@ -42,28 +42,36 @@ in {
 
   catppuccin.rofi.enable = true;
 
-
-#  wayland.windowManager.hyprland.settings = {
-#    windowrule = [
-#      "stay_focused 1, match:class ^Rofi$"
-#      "rounding 0, match:class ^Rofi$"
-#    ];
-#
-#    bindr = [
-#      "$mainMod, Super_L, exec, rofi -show drun -pid /tmp/wofi-pid || pkill rofi"
-#    ];
-#  };
+  #  wayland.windowManager.hyprland.settings = {
+  #    windowrule = [
+  #      "stay_focused 1, match:class ^Rofi$"
+  #      "rounding 0, match:class ^Rofi$"
+  #    ];
+  #
+  #    bindr = [
+  #      "$mainMod, Super_L, exec, rofi -show drun -pid /tmp/wofi-pid || pkill rofi"
+  #    ];
+  #  };
 
   programs.yazi.settings = {
     opener = {
       rofi-open = [
-        { run = "rofi -show drun -run-command '{cmd} \"'\"$@\"'\"'"; desc = "Open With"; }
+        {
+          run = "rofi -show drun -run-command '{cmd} \"'\"$@\"'\"'";
+          desc = "Open With";
+        }
       ];
     };
     open = {
       append_rules = [
-        { name = "*"; use = "rofi-open"; }
-        { name = "*/"; use = "rofi-open"; }
+        {
+          name = "*";
+          use = "rofi-open";
+        }
+        {
+          name = "*/";
+          use = "rofi-open";
+        }
       ];
     };
   };

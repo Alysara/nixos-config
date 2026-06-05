@@ -19,9 +19,13 @@
       # url = "git+file:///home/cyren/dev/cpp/hypredge";
       inputs.hyprland.follows = "hyprland";
     };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, zen-browser, hytale-launcher, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, zen-browser, hytale-launcher, nixvim, ... }:
     let
       inherit (self) outputs;
       lib = nixpkgs.lib;
@@ -44,7 +48,10 @@
       alysara = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = { inherit inputs outputs; };
-        modules = [ ./home/home.nix ];
+        modules = [ 
+          ./home/home.nix
+          nixvim.homeModules.nixvim
+        ];
       };
     };
   };

@@ -27,6 +27,8 @@
       ];
 
       userSettings = {
+        "extensions.autoUpdate" = false;
+        "extensions.autoCheckUpdates" = false;
         "explorer.confirmDragAndDrop" = false;
         "files.autoSave" = "afterDelay";
         "workbench.colorTheme" = "Tokyo Night";

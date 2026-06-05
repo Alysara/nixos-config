@@ -10,12 +10,14 @@
   #  "waybar"
   # ];
 
-  programs.waybar= {
+  programs.waybar = {
     enable = true;
     style = ./style.css;
 
     settings = {
       main = {
+        on-sigusr1 = "hide";
+        on-sigusr2 = "show";
         position = "top";
         height = 26;
         margin-top = 8;
@@ -105,7 +107,7 @@
             portable = "";
             car = "";
             default = [
-                ""
+              ""
             ];
           };
           on-click = "pavucontrol";
@@ -116,14 +118,14 @@
           tooltip-format = "Left Click: Launch Notification Center\nRight Click: Do not Disturb";
           format = "{icon} ";
           format-icons = {
-              notification = "<span foreground='@lavender'><sup></sup></span>";
-              none = "";
-              dnd-notification = "<span foreground='@lavender'><sup></sup></span>";
-              dnd-none = "";
-              inhibited-notification = "<span foreground='@lavender'><sup></sup></span>";
-              inhibited-none = "";
-              dnd-inhibited-notification = "<span foreground='@lavender'><sup></sup></span>";
-              dnd-inhibited-none = "";
+            notification = "<span foreground='@lavender'><sup></sup></span>";
+            none = "";
+            dnd-notification = "<span foreground='@lavender'><sup></sup></span>";
+            dnd-none = "";
+            inhibited-notification = "<span foreground='@lavender'><sup></sup></span>";
+            inhibited-none = "";
+            dnd-inhibited-notification = "<span foreground='@lavender'><sup></sup></span>";
+            dnd-inhibited-none = "";
           };
           return-type = "json";
           exec-if = "which swaync-client";
@@ -143,12 +145,9 @@
         #   }
         # }
 
-
-
-
       };
     };
-    
+
   };
 
 }
