@@ -8,23 +8,26 @@
   programs.yazi = {
     enable = true;
     settings = {
-      opener = {
-        zen = [
-          { run = "zen \"$@\""; desc = "Zen Browser"; }
-        ];
-      };
-      open = {
-        rules = [
-          {
-            name = "*.html";
-            use = "zen";
-          }
-          {
-            name = "*.htm";
-            use = "zen";
-          }
-        ];
-      };
+			opener = {
+				nvim = [
+					{ run = "nvim \"$@\""; desc = "Neovim"; block = true; }
+				];
+				zen = [
+					{ run = "zen \"$@\""; desc = "Zen Browser"; }
+				];
+			};
+			open = {
+				prepend_rules = [
+					{
+						mime = "text/html";
+						use = "zen";
+					}
+					{
+						mime = "text/*";
+						use = "nvim";
+					}
+				];
+			};
     };
   };
 

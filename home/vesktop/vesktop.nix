@@ -48,6 +48,7 @@
           DisableCallIdle.enabled = true;
           VoiceMessages.enabled = true;
           CustomRPC.enabled = true;
+					FakeNitro.enabled = true;
         };
       };
     };

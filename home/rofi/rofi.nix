@@ -65,11 +65,11 @@ in
     open = {
       append_rules = [
         {
-          name = "*";
+          mime = "*/*";
           use = "rofi-open";
         }
         {
-          name = "*/";
+          url = "*/";
           use = "rofi-open";
         }
       ];

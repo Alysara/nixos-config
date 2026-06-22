@@ -102,6 +102,7 @@ in
 
           (bind "SUPER + D" ''hl.dsp.focus({ workspace = "e+1" })'')
           (bind "SUPER + A" ''hl.dsp.focus({ workspace = "e-1" })'')
+          (bind "SUPER + L" ''hl.dsp.focus({ workspace = "previous" })'')
           (bind "SUPER + right" "hl.dsp.focus({ direction = 'r' })")
           (bind "SUPER + left" "hl.dsp.focus({ direction = 'l' })")
           (bind "SUPER + up" "hl.dsp.focus({ direction = 'u' })")

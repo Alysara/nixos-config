@@ -30,8 +30,7 @@ in
     # ./hypredge.nix
     ./hyprlock.nix
     ./hyprpaper.nix
-    ./hypridle.nix
-    ./bindings.nix
+    ./hypridle.nix ./bindings.nix
     ./startup.nix
   ];
 
@@ -59,21 +58,21 @@ in
           "window.fullscreen"
           (luaify ''
             function(window)
-            				if window.fullscreen > 0 then
-            					hl.exec_cmd("pkill -USR1 waybar")
-            				else
-            					hl.exec_cmd("pkill -USR2 waybar") end
-            			end'')
+								if window.fullscreen and window.fullscreen > 0 then
+									hl.exec_cmd("pkill -USR1 waybar")
+								else
+									hl.exec_cmd("pkill -USR2 waybar") end
+							end'')
         ])
         (call [
           "window.active"
           (luaify ''
             function(window)
-            				if window and window.fullscreen > 0 then
-            					hl.exec_cmd("pkill -USR1 waybar")
-            				else
-            					hl.exec_cmd("pkill -USR2 waybar") end
-            			end'')
+								if window.fullscreen and window and window.fullscreen > 0 then
+									hl.exec_cmd("pkill -USR1 waybar")
+								else
+									hl.exec_cmd("pkill -USR2 waybar") end
+							end'')
         ])
       ];
 
@@ -107,7 +106,7 @@ in
           float_gaps = 0;
           gaps_workspaces = 0;
           "col.inactive_border" = "0xff444444";
-          "col.active_border" = "0xffffffff";
+          "col.active_border" = "0xff89b4fa";
           "col.nogroup_border" = "0xffffaaff";
           "col.nogroup_border_active" = "0xffff00ff";
           layout = "dwindle";

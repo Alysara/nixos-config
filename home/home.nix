@@ -19,6 +19,7 @@
     ./yazi.nix
     ./git.nix
     ./vim.nix
+		./helix.nix
     # ./hytale.nix
   ];
 
@@ -26,6 +27,9 @@
     flavor = "mocha";
     accent = "lavender";
   };
+
+	catppuccin.autoEnable = false;
+	catppuccin.enable = true;
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -89,6 +93,7 @@
     element-desktop
     geekbench
     # cinny-desktop
+		bluetuith
 
     gimp
     obsidian

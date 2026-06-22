@@ -125,7 +125,7 @@
           "sponsorBlocker@ajay.app" = "sponsorblock";
           "addon@darkreader.org" = "darkreader";
           "uBlock0@raymondhill.net" = "ublock-origin";
-          "{d7742d87-e61d-4b78-b8a1-b469842139fa}" = "vimium-ff";
+          # "{d7742d87-e61d-4b78-b8a1-b469842139fa}" = "vimium-ff";
         };
 
         Preferences = mkLockedAttrs {
