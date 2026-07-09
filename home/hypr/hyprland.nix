@@ -1,8 +1,6 @@
 {
   inputs,
   pkgs,
-  config,
-  fetchurl,
   lib,
   ...
 }:
@@ -10,14 +8,7 @@
 let
   inherit (import ./lua_utils.nix { inherit lib; })
     luaify
-    lambda
     call
-    bind_flags
-    bind
-    bind_exec
-    smw
-    with_flags
-    on_startup
     ;
 in
 {
@@ -30,7 +21,8 @@ in
     # ./hypredge.nix
     ./hyprlock.nix
     ./hyprpaper.nix
-    ./hypridle.nix ./bindings.nix
+    ./hypridle.nix
+    ./bindings.nix
     ./startup.nix
   ];
 
@@ -57,22 +49,22 @@ in
         (call [
           "window.fullscreen"
           (luaify ''
-            function(window)
-								if window.fullscreen and window.fullscreen > 0 then
-									hl.exec_cmd("pkill -USR1 waybar")
-								else
-									hl.exec_cmd("pkill -USR2 waybar") end
-							end'')
+                        function(window)
+            								if window.fullscreen and window.fullscreen > 0 then
+            									hl.exec_cmd("pkill -USR1 waybar")
+            								else
+            									hl.exec_cmd("pkill -USR2 waybar") end
+            							end'')
         ])
         (call [
           "window.active"
           (luaify ''
-            function(window)
-								if window.fullscreen and window and window.fullscreen > 0 then
-									hl.exec_cmd("pkill -USR1 waybar")
-								else
-									hl.exec_cmd("pkill -USR2 waybar") end
-							end'')
+                        function(window)
+            								if window.fullscreen and window and window.fullscreen > 0 then
+            									hl.exec_cmd("pkill -USR1 waybar")
+            								else
+            									hl.exec_cmd("pkill -USR2 waybar") end
+            							end'')
         ])
       ];
 
@@ -97,6 +89,7 @@ in
 
       config = {
         xwayland.force_zero_scaling = true;
+        animations.enabled = false;
 
         general = {
           border_size = 1;
@@ -173,212 +166,39 @@ in
         input = {
           kb_layout = "us";
           sensitivity = 0;
+
         };
+			};
 
-        curve = [
-          (call [
-            "easeOutQuint"
-            {
-              type = "bezier";
-              points = [
-                [
-                  0.23
-                  1
-                ]
-                [
-                  0.32
-                  1
-                ]
-              ];
-            }
-          ])
-          (call [
-            "easeInOutCubic"
-            {
-              type = "bezier";
-              points = [
-                [
-                  0.65
-                  0.05
-                ]
-                [
-                  0.36
-                  1
-                ]
-              ];
-            }
-          ])
-          (call [
-            "linear"
-            {
-              type = "bezier";
-              points = [
-                [
-                  0
-                  0
-                ]
-                [
-                  1
-                  1
-                ]
-              ];
-            }
-          ])
-          (call [
-            "almostLinear"
-            {
-              type = "bezier";
-              points = [
-                [
-                  0.5
-                  0.5
-                ]
-                [
-                  0.75
-                  1
-                ]
-              ];
-            }
-          ])
-          (call [
-            "quick"
-            {
-              type = "bezier";
-              points = [
-                [
-                  0.15
-                  0
-                ]
-                [
-                  0.1
-                  1
-                ]
-              ];
-            }
-          ])
-          (call [
-            "easy"
-            {
-              type = "spring";
-              mass = 1;
-              stiffness = 71.2633;
-              dampening = 15.8273644;
-            }
-          ])
-        ];
 
-        animation = [
-          {
-            leaf = "global";
-            enabled = true;
-            speed = 10;
-            bezier = "default";
-          }
-          {
-            leaf = "border";
-            enabled = true;
-            speed = 5.39;
-            bezier = "easeOutQuint";
-          }
-          {
-            leaf = "windows";
-            enabled = true;
-            speed = 4.79;
-            spring = "easy";
-          }
-          {
-            leaf = "windowsIn";
-            enabled = true;
-            speed = 4.1;
-            spring = "easy";
-            style = "popin 87%";
-          }
-          {
-            leaf = "windowsOut";
-            enabled = true;
-            speed = 1.49;
-            bezier = "linear";
-            style = "popin 87%";
-          }
-          {
-            leaf = "fadeIn";
-            enabled = true;
-            speed = 1.73;
-            bezier = "almostLinear";
-          }
-          {
-            leaf = "fadeOut";
-            enabled = true;
-            speed = 1.46;
-            bezier = "almostLinear";
-          }
-          {
-            leaf = "fade";
-            enabled = true;
-            speed = 3.03;
-            bezier = "quick";
-          }
-          {
-            leaf = "layers";
-            enabled = true;
-            speed = 3.81;
-            bezier = "easeOutQuint";
-          }
-          {
-            leaf = "layersIn";
-            enabled = true;
-            speed = 4;
-            bezier = "easeOutQuint";
-            style = "fade";
-          }
-          {
-            leaf = "layersOut";
-            enabled = true;
-            speed = 1.5;
-            bezier = "linear";
-            style = "fade";
-          }
-          {
-            leaf = "fadeLayersIn";
-            enabled = true;
-            speed = 1.79;
-            bezier = "almostLinear";
-          }
-          {
-            leaf = "fadeLayersOut";
-            enabled = true;
-            speed = 1.39;
-            bezier = "almostLinear";
-          }
-          {
-            leaf = "workspaces";
-            enabled = true;
-            speed = 3;
-            bezier = "easeInOutCubic";
-            style = "slide";
-          }
-          {
-            leaf = "workspacesIn";
-            enabled = true;
-            speed = 3;
-            bezier = "easeInOutCubic";
-            style = "slide";
-          }
-          {
-            leaf = "workspacesOut";
-            enabled = true;
-            speed = 3;
-            bezier = "easeInOutCubic";
-            style = "slide";
-          }
-          {
-            leaf = "zoomFactor";
-            enabled = true;
-            speed = 7;
-            bezier = "quick";
-          }
-        ];
-      };
+			# curve = [
+			# 	(call ["easeOutQuint"   { type = "bezier"; points = [[0.23 1]    [0.32 1]]; }])
+			# 	(call ["easeInOutCubic" { type = "bezier"; points = [[0.65 0.05] [0.36 1]]; }])
+			# 	(call ["linear"         { type = "bezier"; points = [[0    0]    [1    1]]; }])
+			# 	(call ["almostLinear"   { type = "bezier"; points = [[0.5  0.5]  [0.75 1]]; }])
+			# 	(call ["quick"          { type = "bezier"; points = [[0.15 0]    [0.1  1]]; }])
+			# 	(call ["easy"           { type = "spring"; mass = 1; stiffness = 500; dampening = 32; }])
+			# ];
+			#
+			# animation = map (a: a // { speed = a.speed * 0.25; })[
+			# 	{ leaf = "global";           enabled = true; speed = 10;   bezier = "default"; }
+			# 	{ leaf = "border";           enabled = true; speed = 5.39; bezier = "easeOutQuint"; }
+			# 	{ leaf = "windows";          enabled = true; speed = 1;    spring = "easy"; }
+			# 	{ leaf = "windowsIn";        enabled = true; speed = 1;    spring = "easy";           style = "popin 40%"; }
+			# 	{ leaf = "windowsOut";       enabled = true; speed = 1;    spring = "easy";           style = "popin 60%"; }
+			# 	{ leaf = "windowsMove";      enabled = true; speed = 1;    spring = "easy";           style = "popin 40%"; }
+			# 	{ leaf = "fadeIn";           enabled = true; speed = 1.73; bezier = "almostLinear"; }
+			# 	{ leaf = "fadeOut";          enabled = true; speed = 1.46; bezier = "almostLinear"; }
+			# 	{ leaf = "fade";             enabled = true; speed = 3.03; bezier = "quick"; }
+			# 	{ leaf = "layers";           enabled = true; speed = 3.81; bezier = "easeOutQuint"; }
+			# 	{ leaf = "layersIn";         enabled = true; speed = 4;    bezier = "easeOutQuint";   style = "fade"; }
+			# 	{ leaf = "layersOut";        enabled = true; speed = 1.5;  bezier = "linear";         style = "fade"; }
+			# 	{ leaf = "fadeLayersIn";     enabled = true; speed = 1.79; bezier = "almostLinear"; }
+			# 	{ leaf = "fadeLayersOut";    enabled = true; speed = 1.39; bezier = "almostLinear"; }
+			# 	{ leaf = "workspaces";       enabled = true; speed = 3;    bezier = "easeInOutCubic"; style = "slide"; }
+			# 	{ leaf = "specialWorkspace"; enabled = true; speed = 3;    bezier = "easeInOutCubic"; style = "slidevert"; }
+			# 	{ leaf = "zoomFactor";       enabled = true; speed = 7;    bezier = "quick"; }
+			# ];
     };
   };
 }

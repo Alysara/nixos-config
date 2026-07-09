@@ -7,9 +7,6 @@
       "*.private.nix"
 			".envrc"
 			".direnv/"
-      "flake.nix"
-      "flake.lock"
-      "!.dotfiles/"
     ];
   };
 }

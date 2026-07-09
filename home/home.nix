@@ -98,6 +98,10 @@
     gimp
     obsidian
     ripgrep
+    # cargo
+    # rustc
+		direnv
+		nix-direnv
 
     # inputs.hytale-launcher.packages.${stdenv.hostPlatform.system}.default
     # self.packages.${stdenv.hostPlatform.system}.hytale-launcher.default
@@ -123,6 +127,12 @@
     # (writeShellScriptBin "buildhome" (builtins.readFile ../scripts/buildhome.sh))
     (writeShellScriptBin "add-extension" (builtins.readFile ../scripts/add-extension.sh))
   ];
+
+	programs.direnv = {
+		enable = true;
+		nix-direnv.enable = true;
+	};
+
 
   programs.btop = {
     enable = true;
@@ -202,9 +212,16 @@
       ".." = "cd ..";
       buildhome = "home-manager switch --flake ~/.dotfiles";
       buildnix = "sudo nixos-rebuild switch --flake ~/.dotfiles";
-      nixdevelop = "nix develop path:.";
+			bh = "buildhome";
+			bn = "buildnix";
     };
   };
   
   programs.home-manager.enable = true;
+
+	nixpkgs.overlays = [
+		(final: _prev: {
+			pnpm_10_29_2 = final.pnpm_10;
+		})
+	];
 }

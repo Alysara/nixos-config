@@ -5,31 +5,42 @@
     xdg-desktop-portal-termfilechooser
   ];
 
-  programs.yazi = {
-    enable = true;
-    settings = {
-			opener = {
-				nvim = [
-					{ run = "nvim \"$@\""; desc = "Neovim"; block = true; }
-				];
-				zen = [
-					{ run = "zen \"$@\""; desc = "Zen Browser"; }
-				];
-			};
-			open = {
-				prepend_rules = [
-					{
-						mime = "text/html";
-						use = "zen";
-					}
-					{
-						mime = "text/*";
-						use = "nvim";
-					}
-				];
-			};
-    };
-  };
+	programs.yazi = {
+	  enable = true;
+	  settings = {
+	    opener = {
+	      hx = [
+	        { run = "hx \"$@\""; desc = "Helix"; block = true; }
+	      ];
+	      nvim = [
+	        { run = "nvim \"$@\""; desc = "Neovim"; block = true; }
+	      ];
+	      zen = [
+	        { run = "zen \"$@\""; desc = "Zen Browser"; }
+	      ];
+	    };
+	    open = {
+	      prepend_rules = [
+	        {
+	          mime = "text/html";
+	          use = "zen";
+	        }
+          {
+            url = "*.ts";
+            use = "nvim";
+          }
+          {
+            url = "*.tsx";
+            use = "nvim";
+          }
+	        {
+	          mime = "text/*";
+	          use = "nvim";
+	        }
+	      ];
+	    };
+	  };
+	};
 
   catppuccin.yazi.enable = true;
 
