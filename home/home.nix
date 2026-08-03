@@ -54,6 +54,7 @@
 
 
 
+
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -102,6 +103,7 @@
     # rustc
 		direnv
 		nix-direnv
+		mysql-workbench
 
     # inputs.hytale-launcher.packages.${stdenv.hostPlatform.system}.default
     # self.packages.${stdenv.hostPlatform.system}.hytale-launcher.default

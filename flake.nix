@@ -9,7 +9,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
     catppuccin.url = "github:catppuccin/nix";
 
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake/a8f9b6d014c9cfe0615dccb2bc7808713f6e62c2";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
     hytale-launcher.url = "github:TNAZEP/HytaleLauncherFlake";

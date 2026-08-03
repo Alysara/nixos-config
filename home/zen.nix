@@ -301,10 +301,15 @@
           icon = "fingerprint";
           id = 2;
         };
-        School = {
+        Career = {
           color = "yellow";
           icon = "fingerprint";
           id = 3;
+        };
+        Writing = {
+          color = "blue";
+          icon = "fingerprint";
+          id = 4;
         };
       };
       spacesForce = true;
@@ -356,10 +361,10 @@
               ];
             };
           };
-          "School" = {
+          "Career" = {
             id = "78aabdad-8aae-4fe0-8ff0-2a0c6c4ccc24";
             icon = "🎓";
-            container = containers."School".id;
+            container = containers."Career".id;
             position = 3000;
             theme = {
               type = "gradient";
@@ -373,6 +378,27 @@
                   red = 84;
                   green = 76;
                   blue = 47;
+                }
+              ];
+            };
+          };
+          "Writing" = {
+            id = "78aabdad-8aae-4fe0-8ff0-2a0c6c4ccc22";
+            icon = "✏️";
+            container = containers."Writing".id;
+            position = 4000;
+            theme = {
+              type = "gradient";
+              colors = [
+                {
+                  red = 189;
+                  green = 141;
+                  blue = 252;
+                }
+                {
+                  red = 222;
+                  green = 141;
+                  blue = 252;
                 }
               ];
             };

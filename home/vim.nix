@@ -35,12 +35,13 @@
       enable = true;
       settings = {
         flavour = "mocha";
-        transparent_background = true;
+        transparent_background = false;
       };
     };
 
+
     plugins = {
-      web-devicons.enable = true;
+   #    web-devicons.enable = true;
       treesitter = {
         enable = true;
         settings = {
@@ -81,33 +82,61 @@
             ];
           };
         };
-      };
+			};
 
-      # neo-tree = {
-      #   enable = true;
-      #   settings = {
-      #     filesystem = {
-      #       filtered_items = {
-      #         visible = true;
-      #       };
-      #     };
-      #     window = {
-      #       width = 25;
-      #       mappings = {
-      #         P = {
-      #           command = "toggle_preview";
-      #           config = {
-      #             use_float = true;
-      #           };
-      #         };
-      #       };
-      #     };
-      #   };
-      # };
+			auto-save = {
+				enable = true;
+				settings = {
+					enabled = true;
+					trigger_events = {
+						immediate_save = [ "BufLeave" "FocusLost" ];
+						defer_save = [ "InsertLeave" "TextChanged" ];
+					};
+					debounce_delay = 25;
+					condition.__raw = ''
+						function(buf)
+							local fn = vim.fn
+							local utils = require("auto-save.utils.data")
+							if fn.getbufvar(buf, "&modifiable") == 1 and utils.not_in(fn.getbufvar(buf, "&filetype"), {}) then
+								return true
+							end
+							return false
+						end
+					'';
+				};
+			};
 
+   #    # neo-tree = {
+   #    #   enable = true;
+   #    #   settings = {
+   #    #     filesystem = {
+   #    #       filtered_items = {
+   #    #         visible = true;
+   #    #       };
+   #    #     };
+   #    #     window = {
+   #    #       width = 25;
+   #    #       mappings = {
+   #    #         P = {
+   #    #           command = "toggle_preview";
+   #    #           config = {
+   #    #             use_float = true;
+   #    #           };
+   #    #         };
+   #    #       };
+   #    #     };
+   #    #   };
+   #    # };
+			#
       bufferline.enable = true;
-      comment.enable = true;
-			mini-align.enable = true;
+   #    comment.enable = true;
+			# mini-align.enable = true;
+			kitty-scrollback = {
+				enable = true;
+				settings = {
+					scrollback_yank_register = false;
+				};
+			};
 
       lsp = {
         enable = true;
@@ -126,6 +155,8 @@
             };
           };
 
+					ts_ls.enable = true;
+
           rust_analyzer = {
             enable = true;
             installCargo = false;
@@ -143,20 +174,20 @@
         };
       };
 
-      image = {
-        enable = true;
-        settings = {
-          backend = "kitty";
-          hijackFilePatterns = [
-            "*.png"
-            "*.jpg"
-            "*.jpeg"
-            "*.gif"
-            "*.webp"
-          ];
-        };
-      };
-
+   #    image = {
+   #      enable = true;
+   #      settings = {
+   #        backend = "kitty";
+   #        hijackFilePatterns = [
+   #          "*.png"
+   #          "*.jpg"
+   #          "*.jpeg"
+   #          "*.gif"
+   #          "*.webp"
+   #        ];
+   #      };
+   #    };
+			#
       cmp = {
         enable = true;
         settings = {
@@ -171,52 +202,52 @@
       };
 
       # UI
-			lualine = {
-				enable = true;
-				settings = {
-					options = {
-						component_separators = { left = ""; right = ""; };
-						section_separators = { left = ""; right = ""; };
-					};
-					sections = {
-						lualine_a = [
-							{
-								__unkeyed-1 = "mode";
-								separator = { left = ""; };
-							}
-						];
-						lualine_b = [ "branch" "diff" "diagnostics" ];
-						lualine_c = [ "filename" ];
-						lualine_x = [ "filetype" ];
-						lualine_y = [ "progress" ];
-						lualine_z = [
-							{
-								__unkeyed-1 = "location";
-								separator = { right = ""; };
-							}
-						];
-					};
-				};
-			};
-
-      noice.enable = true;
-      indent-blankline.enable = true;
-
-      # Git
-      gitsigns.enable = true;
-
-      # Navigation
-      harpoon.enable = true;
+			# lualine = {
+			# 	enable = true;
+			# 	settings = {
+			# 		options = {
+			# 			component_separators = { left = ""; right = ""; };
+			# 			section_separators = { left = ""; right = ""; };
+			# 		};
+			# 		sections = {
+			# 			lualine_a = [
+			# 				{
+			# 					__unkeyed-1 = "mode";
+			# 					separator = { left = ""; };
+			# 				}
+			# 			];
+			# 			lualine_b = [ "branch" "diff" "diagnostics" ];
+			# 			lualine_c = [ "filename" ];
+			# 			lualine_x = [ "filetype" ];
+			# 			lualine_y = [ "progress" ];
+			# 			lualine_z = [
+			# 				{
+			# 					__unkeyed-1 = "location";
+			# 					separator = { right = ""; };
+			# 				}
+			# 			];
+			# 		};
+			# 	};
+			# };
+			#
+   #    noice.enable = true;
+   #    # indent-blankline.enable = true;
+			#
+   #    # Git
+   #    gitsigns.enable = true;
+			#
+   #    # Navigation
+   #    harpoon.enable = true;
       flash.enable = true;
-
-      # Editing
+			#
+   #    # Editing
       vim-surround.enable = true;
       mini = {
         enable = true;
         modules.pairs = { };
       };
-
-      # LSP / Code
+			#
+   #    # LSP / Code
 			trouble = {
 				enable = true;
 				settings = {
@@ -236,75 +267,78 @@
 					};
 				};
 			};
-      fidget.enable = true;
-
+   #    # fidget.enable = true;
+			#
       which-key = {
 				enable = true;
 				settings.preset = "helix";
 			};
 
       undotree.enable = true;
-      # vim-illuminate.enable = true;
-      conform-nvim = {
-        enable = true;
-        settings = {
-          # format_on_save = {
-          #   lsp_fallback = true;
-          #   timeout_ms = 500;
-          # };
-          formatters_by_ft = {
-            rust = [ "rustfmt" ];
-          };
-        };
-      };
-
-      auto-session = {
-        enable = true;
-        settings = {
-          auto_save = true;
-          auto_restore = true;
-          session_lens.load_on_setup = false;
-          bypass_save_filetypes = [
-            "toggleterm"
-            "terminal"
-          ];
-        };
-      };
-      todo-comments.enable = true;
-      # tiny-inline-diagnostic.enable = true;
-
-      toggleterm = {
-        enable = true;
-        settings = {
-          direction = "float";
-          float_opts = {
-            border = "none";
-            width.__raw = "vim.o.columns";
-            height.__raw = "vim.o.lines";
-          };
-        };
-      };
-      vimwiki.enable = true;
+   #    # vim-illuminate.enable = true;
+   #    # conform-nvim = {
+   #    #   enable = true;
+   #    #   settings = {
+   #    #     # format_on_save = {
+   #    #     #   lsp_fallback = true;
+   #    #     #   timeout_ms = 500;
+   #    #     # };
+   #    #     formatters_by_ft = {
+   #    #       rust = [ "rustfmt" ];
+   #    #     };
+   #    #   };
+   #    # };
+			#
+   #   #  auto-session = {
+   #   #    enable = true;
+   #   #    settings = {
+   #   #      auto_save = true;
+   #   #      auto_restore = true;
+   #   #      session_lens.load_on_setup = false;
+   #   #      bypass_save_filetypes = [
+   #   #        "toggleterm"
+   #   #        "terminal"
+   #   #      ];
+			# 		# auto_session_enabled.__raw = "vim.env.KITTY_SCROLLBACK_NVIM ~= 'true'";
+   #   #    };
+   #   #  };
+   #    # todo-comments.enable = true;
+   #    # tiny-inline-diagnostic.enable = true;
+			#
+   #    # toggleterm = {
+   #    #   enable = true;
+   #    #   settings = {
+   #    #     direction = "float";
+   #    #     float_opts = {
+   #    #       border = "none";
+   #    #       width.__raw = "vim.o.columns";
+   #    #       height.__raw = "vim.o.lines";
+   #    #     };
+   #    #   };
+   #    # };
+   #    # vimwiki.enable = true;
+			
       yazi.enable = true;
       better-escape.enable = true;
-      smear-cursor.enable = false;
 
-      tiny-glimmer = {
-        enable = true;
-        settings = {
-          enabled = true;
-          animate = {
-            yank = true;
-            paste = true;
-            undo = true;
-            redo = true;
-          };
-        };
-      };
-
+   #    # smear-cursor.enable = false;
+			#
+   #    # tiny-glimmer = {
+   #    #   enable = true;
+   #    #   settings = {
+   #    #     enabled = true;
+   #    #     animate = {
+   #    #       yank = true;
+   #    #       paste = true;
+   #    #       undo = true;
+   #    #       redo = true;
+   #    #     };
+   #    #   };
+   #    # };
+			#
       treesitter-textobjects.enable = true;
-
-      visual-multi.enable = true;
+			#
+   #    # visual-multi.enable = true;
       treesitter-context = {
         enable = true;
         settings = {
@@ -313,30 +347,31 @@
           multiline_threshold = 2;
         };
       };
-
+			#
       treesj = {
         enable = true;
         settings = {
           max_join_length = 1000;
         };
       };
-
-      project-nvim = {
-        enable = true;
-        settings = {
-          detection_methods = [ "pattern" ];
-          patterns = [
-            ".git"
-            "flake.nix"
-          ];
-        };
-      };
-
-      nix-develop.enable = true;
-      direnv = {
-        enable = true;
-        settings.silent_load = 1;
-      };
+			#
+   #    # project-nvim = {
+   #    #   enable = true;
+   #    #   settings = {
+   #    #     detection_methods = [ "pattern" ];
+   #    #     patterns = [
+   #    #       ".git"
+   #    #       "flake.nix"
+   #    #     ];
+   #    #   };
+   #    # };
+			#
+   #    # nix-develop.enable = true;
+   #    # direnv = {
+   #    #   enable = true;
+   #    #   settings.silent_load = 1;
+   #    # };
+			#
       colorizer = {
         enable = true;
         settings = {
@@ -351,7 +386,7 @@
           };
         };
       };
-
+			#
       abolish.enable = true;
     };
 
@@ -543,53 +578,67 @@
 
     ];
 
-    extraConfigLua = ''
-      							vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
-      								callback = function()
-      									if vim.bo.modified and vim.bo.buftype == "" then
-      										vim.defer_fn(function()
-      											vim.cmd("silent! write")
-      										end, 5)
-      									end
-      								end,
-      							})
+		extraConfigLua = ''
+			vim.api.nvim_create_user_command('BDA', function()
+				for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+					vim.api.nvim_buf_delete(buf, { force = true })
+				end
+			end, {})
 
-      							vim.api.nvim_create_autocmd("TermOpen", {
-      								callback = function()
-      									vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-      									vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-      								end,
-      							})
-      							vim.defer_fn(function()
-      								vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-      								vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-      								vim.api.nvim_set_hl(0, "FloatTitle", { bg = "none" })
-      								vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-      								vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
-      								vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-      								vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
-      								vim.api.nvim_set_hl(0, "DiagnosticFloatingInfo", { bg = "none" })
-      							end, 100)
-      								vim.api.nvim_create_autocmd("DirChanged", {
-      								callback = function()
-      									local function wait_for_cc(attempts)
-      										if attempts <= 0 then return end
-      										if vim.fn.executable("cc") == 1 then
-      											for _, client in ipairs(vim.lsp.get_clients()) do
-      												vim.lsp.stop_client(client.id)
-      											end
-      											vim.defer_fn(function()
-      												vim.cmd("edit")
-      											end, 200)
-      										else
-      											vim.defer_fn(function()
-      												wait_for_cc(attempts - 1)
-      											end, 200)
-      										end
-      									end
-      									wait_for_cc(20)  -- try for up to 10 seconds
-      								end,
-      							})
-    '';
+			require('kitty-scrollback').setup({
+				yank_register_enabled = false,
+			})
+		'';
+  # 	-- init = function()
+  # 	-- 	vim.cmd.colorscheme('catppuccin-mocha')
+  # 	-- end,)
+  #
+  # --     							vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
+  # --     								callback = function()
+  # --     									if vim.bo.modified and vim.bo.buftype == "" then
+  # --     										vim.defer_fn(function()
+  # --     											vim.cmd("silent! write")
+  # --     										end, 5)
+  # --     									end
+  # --     								end,
+  # --     							})
+  # --
+  # --     							vim.api.nvim_create_autocmd("TermOpen", {
+  # --     								callback = function()
+  # --     									vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+  # --     									vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+  # --     								end,
+  # --     							})
+  #     							-- vim.defer_fn(function()
+  #     							-- 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+  #     							-- 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+  #     							-- 	vim.api.nvim_set_hl(0, "FloatTitle", { bg = "none" })
+  #     							-- 	vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+  #     							-- 	vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+  #     							-- 	vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+  #     							-- 	vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
+  #     							-- 	vim.api.nvim_set_hl(0, "DiagnosticFloatingInfo", { bg = "none" })
+  #     							-- end, 100)
+  # --     								vim.api.nvim_create_autocmd("DirChanged", {
+  # --     								callback = function()
+  # --     									local function wait_for_cc(attempts)
+  # --     										if attempts <= 0 then return end
+  # --     										if vim.fn.executable("cc") == 1 then
+  # --     											for _, client in ipairs(vim.lsp.get_clients()) do
+  # --     												vim.lsp.stop_client(client.id)
+  # --     											end
+  # --     											vim.defer_fn(function()
+  # --     												vim.cmd("edit")
+  # --     											end, 200)
+  # --     										else
+  # --     											vim.defer_fn(function()
+  # --     												wait_for_cc(attempts - 1)
+  # --     											end, 200)
+  # --     										end
+  # --     									end
+  # --     									wait_for_cc(20)  -- try for up to 10 seconds
+  # --     								end,
+  # --     							})
+  #   '';
   };
 }
