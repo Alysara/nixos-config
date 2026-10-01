@@ -49,22 +49,23 @@ in
         (call [
           "window.fullscreen"
           (luaify ''
-                        function(window)
-            								if window.fullscreen and window.fullscreen > 0 then
-            									hl.exec_cmd("pkill -USR1 waybar")
-            								else
-            									hl.exec_cmd("pkill -USR2 waybar") end
-            							end'')
+            function(window)
+            if window.fullscreen and window.fullscreen > 0 then
+							hl.exec_cmd("pkill -USR1 waybar")
+						else
+							hl.exec_cmd("pkill -USR2 waybar") end
+            end'')
         ])
+
         (call [
           "window.active"
           (luaify ''
-                        function(window)
-            								if window.fullscreen and window and window.fullscreen > 0 then
-            									hl.exec_cmd("pkill -USR1 waybar")
-            								else
-            									hl.exec_cmd("pkill -USR2 waybar") end
-            							end'')
+            function(window)
+            if window and window.fullscreen and window.fullscreen > 0 then
+            	hl.exec_cmd("pkill -USR1 waybar")
+           	else
+							hl.exec_cmd("pkill -USR2 waybar") end
+            end'')
         ])
       ];
 

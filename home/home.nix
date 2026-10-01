@@ -76,7 +76,7 @@
     jq
     inxi
     fastfetch
-    sqlitestudio
+    # sqlitestudio
     vivaldi
     obs-studio
     zip
@@ -103,7 +103,7 @@
     # rustc
 		direnv
 		nix-direnv
-		mysql-workbench
+		# mysql-workbench
 
     # inputs.hytale-launcher.packages.${stdenv.hostPlatform.system}.default
     # self.packages.${stdenv.hostPlatform.system}.hytale-launcher.default

@@ -79,9 +79,9 @@ in
           (bind_exec "SUPER + E" "kitty")
           (bind_exec "SUPER + C" "code")
           (bind_exec "SUPER + B" "kitty btop")
+					(bind_exec "SUPER + SHIFT + L" "hyprlock")
           (bind_exec "SUPER + SHIFT + S" " ${takeScreenshot}") # Screenshot
           (bind_exec "Print" " ${takeScreenshot}") # Screenshot
-          (bind_exec "SUPER + SUPER_L" "rofi -show drun -pid /tmp/wofi-pid || pkill rofi")
           (bind_exec "SUPER + V" "rofi -modi clipboard:${pkgs.cliphist}/bin/cliphist-rofi-img  -show clipboard -show-icons")
 
           # Window Control
@@ -117,6 +117,10 @@ in
           # (bind_exec "SUPER + R" "bash ~/.config/hypr/scripts/RandBackground.sh")
         ]
 
+        (with_flags { release = true; } [
+          (bind_exec "SUPER + SUPER_L" "rofi -show drun -pid /tmp/wofi-pid || pkill rofi")
+        ])
+
         (with_flags { mouse = true; } [
           (bind "SUPER + mouse:272" "hl.dsp.window.drag()")
           (bind "SUPER + mouse:273" "hl.dsp.window.resize()")
@@ -127,9 +131,9 @@ in
           (bind_exec "XF86AudioPause" "playerctl play-pause")
           (bind_exec "XF86AudioPlay" "playerctl play-pause")
           (bind_exec "XF86AudioPrev" "playerctl previous")
-          (bind_exec "Menu + right" "playerctl next")
-          (bind_exec "Menu + left" "playerctl previous")
-          (bind_exec "Menu + SPACE" "playerctl play-pause")
+          (bind_exec "SUPER + ALT + right" "playerctl next")
+          (bind_exec "SUPER + ALT + left" "playerctl previous")
+          (bind_exec "SUPER + ALT + SPACE" "playerctl play-pause")
         ])
 
         (with_flags

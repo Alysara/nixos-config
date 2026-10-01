@@ -35,7 +35,7 @@
       enable = true;
       settings = {
         flavour = "mocha";
-        transparent_background = false;
+        transparent_background = true;
       };
     };
 
