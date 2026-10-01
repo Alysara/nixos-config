@@ -10,7 +10,8 @@
     ./kitty/kitty.nix
     ./vesktop/vesktop.nix
     ./theme/theme.nix
-    ./satty.nix
+    # ./satty.nix
+		# ./grabit.nix
     ./fonts.nix
     ./vscode.nix
     ./zen.nix

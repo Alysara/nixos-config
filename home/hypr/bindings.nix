@@ -55,16 +55,27 @@ let
     on_startup
     ;
 
-  takeScreenshot = pkgs.writeShellScript "takeScreenshot" ''
-    folderName="$HOME/Pictures/Screenshots/$(date +%Y)-$(date +%m)"
-    fileName="$(date +"%Y-%m-%d_%H:%M:%S").png"
-    fullPath="$folderName/$fileName"
+  # takeScreenshot = pkgs.writeShellScript "takeScreenshot" ''
+  #   folderName="$HOME/Pictures/Screenshots/$(date +%Y)-$(date +%m)"
+  #   fileName="$(date +"%Y-%m-%d_%H:%M:%S").png"
+  #   fullPath="$folderName/$fileName"
+  #
+  #   mkdir -p "$folderName"
+  #   ${pkgs.grim}/bin/grim -t ppm - | ${pkgs.satty}/bin/satty --filename - --output-filename "$fullPath"
+  # '';
 
-    mkdir -p "$folderName"
-    ${pkgs.grim}/bin/grim -t ppm - | ${pkgs.satty}/bin/satty --filename - --output-filename "$fullPath"
-  '';
+  take-screenshot = pkgs.writeShellApplication {
+    name = "take-screenshot";
+    runtimeInputs = with pkgs; [ grabit libnotify xdg-utils ];
+    text = builtins.readFile ../screenshot/take-screenshot.sh;
+  };
 in
 {
+	imports = [
+		../screenshot/screenshot.nix
+		../screenshot/take-screenshot.sh
+	];
+
   home.packages = [
     pkgs.brightnessctl
     stepBrightness
@@ -80,8 +91,8 @@ in
           (bind_exec "SUPER + C" "code")
           (bind_exec "SUPER + B" "kitty btop")
 					(bind_exec "SUPER + SHIFT + L" "hyprlock")
-          (bind_exec "SUPER + SHIFT + S" " ${takeScreenshot}") # Screenshot
-          (bind_exec "Print" " ${takeScreenshot}") # Screenshot
+          (bind_exec "SUPER + SHIFT + S" " ${take-screenshot}/bin/take-screenshot") # Screenshot
+          (bind_exec "Print" " ${take-screenshot}/bin/take-screenshot") # Screenshot
           (bind_exec "SUPER + V" "rofi -modi clipboard:${pkgs.cliphist}/bin/cliphist-rofi-img  -show clipboard -show-icons")
 
           # Window Control

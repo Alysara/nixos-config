@@ -48,6 +48,8 @@ in
 			# Half-page scroll, vim-style
 			map kitty_mod+d scroll_page_down
 			map kitty_mod+u scroll_page_up
+
+			remember_window_size no
     '';
   };
 

@@ -33,6 +33,8 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
 
+		overlays.local = import ./packages;
+
     packages.${system}.zen-with-sine = import ./home/zen/zen-with-sine.nix {
       inherit pkgs zen-browser inputs;
     };
