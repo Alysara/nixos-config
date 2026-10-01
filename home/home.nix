@@ -24,6 +24,13 @@
     # ./hytale.nix
   ];
 
+	nixpkgs.overlays = [
+		inputs.self.overlays.local
+		(final: _prev: {
+			pnpm_10_29_2 = final.pnpm_10;
+		})
+	];
+
   catppuccin = {
     flavor = "mocha";
     accent = "lavender";
@@ -222,9 +229,4 @@
   
   programs.home-manager.enable = true;
 
-	nixpkgs.overlays = [
-		(final: _prev: {
-			pnpm_10_29_2 = final.pnpm_10;
-		})
-	];
 }

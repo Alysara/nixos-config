@@ -73,7 +73,7 @@ in
 {
 	imports = [
 		../screenshot/screenshot.nix
-		../screenshot/take-screenshot.sh
+		# ../screenshot/take-screenshot.sh
 	];
 
   home.packages = [
